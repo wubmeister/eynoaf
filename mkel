@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Definition file
 if [ ! -d definitions/$1s ]; then
     mkdir definitions/$1s
 fi
@@ -13,12 +14,44 @@ echo "" >> definitions/$1s/$2.less
 echo "" >> definitions/$1s/$2.less
 echo ".load-overrides();" >> definitions/$1s/$2.less
 
+# Variables and overrides files
+
 if [ ! -d themes/default/$1s ]; then
     mkdir themes/default/$1s
 fi
 touch themes/default/$1s/$2.variables.less
 touch themes/default/$1s/$2.overrides.less
 
+# Example file
+if [ ! -d examples/$1s ]; then
+    mkdir examples/$1s
+fi
+
+TITLE=`perl -pe 's/^([a-z])/\u$1/' <<< $2`
+echo "<!DOCTYPE html>" > definitions/$1s/$2.html
+echo "<html>" > definitions/$1s/$2.html
+echo "<head>" > definitions/$1s/$2.html
+echo "    <meta charset=\"utf-8\" />" > definitions/$1s/$2.html
+echo "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />" > definitions/$1s/$2.html
+echo "    <title>$TITLE | Elements</title>" > definitions/$1s/$2.html
+echo "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../../all.css\" />" > definitions/$1s/$2.html
+echo "</head>" > definitions/$1s/$2.html
+echo "" > definitions/$1s/$2.html
+echo "<body>" > definitions/$1s/$2.html
+echo "" > definitions/$1s/$2.html
+echo "    <section class=\"ui medium padded section\">" > definitions/$1s/$2.html
+echo "        <div class=\"ui container\">" > definitions/$1s/$2.html
+echo "" > definitions/$1s/$2.html
+echo "            <h2 class=\"ui headline\">$TITLE</h2>" > definitions/$1s/$2.html
+echo "" > definitions/$1s/$2.html
+echo "        </div>" > definitions/$1s/$2.html
+echo "    </section>" > definitions/$1s/$2.html
+echo "" > definitions/$1s/$2.html
+echo "</body>" > definitions/$1s/$2.html
+echo "" > definitions/$1s/$2.html
+echo "</html>" > definitions/$1s/$2.html
+
+# Theme files
 NEWLINE=$'\\\n'
 sed -i '' -e "s/\/\*\*\//@$2: \"default\";$NEWLINE\/\*\*\//g" theme.less
 sed -i '' -e "s/\/\*\*\//\& { @import \"definitions\/$1s\/$2.less\"; }$NEWLINE\/\*\*\//g" all.less
