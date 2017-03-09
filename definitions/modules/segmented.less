@@ -8,7 +8,9 @@
 .ui.segmented {
     display: webkit-inline-flex;
     display: inline-flex;
-    box-shadow: 0 0 0 @segmented-border-width @text-color;
+    box-shadow: 0 0 0 @segmented-border-width @color-gray;
+    border-radius: @segmented-border-radius;
+    color: @color-gray;
 
     &.fluid {
         display: -webkit-flex;
@@ -25,8 +27,13 @@
         cursor: pointer;
 
         + .item {
-            border-left: @segmented-border-width @text-color;
+            border-left: @segmented-border-width solid @color-gray;
             color: inherit;
+        }
+
+        &.active {
+            background-color: @color-gray;
+            .choose-fg(@color-gray, white, @text-color);
         }
     }
 
@@ -37,6 +44,11 @@
         > .item + .item {
             border-left-color: @color-primary;
         }
+
+        > .active.item {
+            background-color: @color-primary;
+            .choose-fg(@color-primary, white, @text-color);
+        }
     }
 
     &.secondary {
@@ -45,6 +57,11 @@
 
         > .item + .item {
             border-left-color: @color-secondary;
+        }
+
+        > .active.item {
+            background-color: @color-secondary;
+            .choose-fg(@color-secondary, white, @text-color);
         }
     }
 
@@ -55,6 +72,11 @@
         > .item + .item {
             border-left-color: @color-info;
         }
+
+        > .active.item {
+            background-color: @color-info;
+            .choose-fg(@color-info, white, @text-color);
+        }
     }
 
     &.success {
@@ -63,6 +85,11 @@
 
         > .item + .item {
             border-left-color: @color-success;
+        }
+
+        > .active.item {
+            background-color: @color-success;
+            .choose-fg(@color-success, white, @text-color);
         }
     }
 
@@ -73,6 +100,11 @@
         > .item + .item {
             border-left-color: @color-warning;
         }
+
+        > .active.item {
+            background-color: @color-warning;
+            .choose-fg(@color-warning, white, @text-color);
+        }
     }
 
     &.danger {
@@ -81,6 +113,11 @@
 
         > .item + .item {
             border-left-color: @color-danger;
+        }
+
+        > .active.item {
+            background-color: @color-danger;
+            .choose-fg(@color-danger, white, @text-color);
         }
     }
 }
