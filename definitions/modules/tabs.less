@@ -1,0 +1,191 @@
+@element: tabs;
+@type: module;
+
+@import (multiple) "../../theme.less";
+
+/* Tabs */
+
+.ui.tabs {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+
+    > .tabbar {
+        display: -webkit-flex;
+        display: flex;
+
+        .tab {
+            padding: @tab-v-padding @tab-h-padding;
+            background: @tab-background;
+            color: @tab-color;
+            font-weight: @tab-font-weight;
+            transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+            cursor: pointer;
+
+            &:hover {
+                color: @tab-hover-color;
+            }
+
+            &.active {
+                color: @tab-active-color;
+                font-weight: @tab-active-font-weight;
+            }
+        }
+
+        &:not(.striped) {
+            background: @tabs-background;
+
+            .tab {
+                margin: @tab-space-around;
+                border-radius: @tab-border-radius;
+
+                &:hover {
+                    background: @tab-hover-background;
+                }
+
+                &.active {
+                    background: @tab-active-background;
+                }
+            }
+        }
+    }
+
+    &.top {
+        > .tabbar {
+            .tab {
+                margin-bottom: 0;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &.striped {
+                border-bottom: @tab-stripe-size solid @tab-stripe-color;
+
+                .tab {
+                    border-bottom: @tab-stripe-size solid transparent;
+                    margin-bottom: -@tab-stripe-size !important;
+
+                    &:hover {
+                        border-bottom-color: @tab-stripe-hover-color;
+                    }
+
+                    &.active {
+                        border-bottom-color: @tab-stripe-active-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &.right {
+        -webkit-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+
+        > .tabbar {
+            -webkit-flex-direction: column;
+            flex-direction: column;
+
+            .tab {
+                margin-left: 0;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            &.striped {
+                border-left: @tab-stripe-size solid @tab-stripe-color;
+
+                .tab {
+                    border-left: @tab-stripe-size solid transparent;
+                    margin-left: -@tab-stripe-size !important;
+
+                    &:hover {
+                        border-left-color: @tab-stripe-hover-color;
+                    }
+
+                    &.active {
+                        border-left-color: @tab-stripe-active-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &.bottom {
+        -webkit-flex-direction: column-reverse;
+        flex-direction: column-reverse;
+
+        > .tabbar {
+            .tab {
+                margin-top: 0;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            &.striped {
+                border-top: @tab-stripe-size solid @tab-stripe-color;
+
+                .tab {
+                    border-top: @tab-stripe-size solid transparent;
+                    margin-top: -@tab-stripe-size !important;
+
+                    &:hover {
+                        border-top-color: @tab-stripe-hover-color;
+                    }
+
+                    &.active {
+                        border-top-color: @tab-stripe-active-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &.left {
+        -webkit-flex-direction: row;
+        flex-direction: row;
+
+        > .tabbar {
+            -webkit-flex-direction: column;
+            flex-direction: column;
+
+            .tab {
+                margin-right: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &.striped {
+                border-right: @tab-stripe-size solid @tab-stripe-color;
+
+                .tab {
+                    border-right: @tab-stripe-size solid transparent;
+                    margin-right: -@tab-stripe-size !important;
+
+                    &:hover {
+                        border-right-color: @tab-stripe-hover-color;
+                    }
+
+                    &.active {
+                        border-right-color: @tab-stripe-active-color;
+                    }
+                }
+            }
+        }
+    }
+
+    > .panels {
+        flex-grow: 1;
+
+        > .panel {
+            display: none;
+            padding: @half-spacing;
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+}
+
+.load-overrides();

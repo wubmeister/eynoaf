@@ -1,0 +1,88 @@
+@element: segmented;
+@type: module;
+
+@import (multiple) "../../theme.less";
+
+/* Segmented control */
+
+.ui.segmented {
+    display: webkit-inline-flex;
+    display: inline-flex;
+    box-shadow: 0 0 0 @segmented-border-width @text-color;
+
+    &.fluid {
+        display: -webkit-flex;
+        display: flex;
+
+        > .item {
+            flex: 1 1 100%;
+            text-align: center;
+        }
+    }
+
+    > .item {
+        padding: @segmented-item-v-padding @segmented-item-h-padding;
+        cursor: pointer;
+
+        + .item {
+            border-left: @segmented-border-width @text-color;
+            color: inherit;
+        }
+    }
+
+    &.primary {
+        color: @color-primary;
+        box-shadow: 0 0 0 @segmented-border-width @color-primary;
+
+        > .item + .item {
+            border-left-color: @color-primary;
+        }
+    }
+
+    &.secondary {
+        color: @color-secondary;
+        box-shadow: 0 0 0 @segmented-border-width @color-secondary;
+
+        > .item + .item {
+            border-left-color: @color-secondary;
+        }
+    }
+
+    &.info {
+        color: @color-info;
+        box-shadow: 0 0 0 @segmented-border-width @color-info;
+
+        > .item + .item {
+            border-left-color: @color-info;
+        }
+    }
+
+    &.success {
+        color: @color-success;
+        box-shadow: 0 0 0 @segmented-border-width @color-success;
+
+        > .item + .item {
+            border-left-color: @color-success;
+        }
+    }
+
+    &.warning {
+        color: @color-warning;
+        box-shadow: 0 0 0 @segmented-border-width @color-warning;
+
+        > .item + .item {
+            border-left-color: @color-warning;
+        }
+    }
+
+    &.danger {
+        color: @color-danger;
+        box-shadow: 0 0 0 @segmented-border-width @color-danger;
+
+        > .item + .item {
+            border-left-color: @color-danger;
+        }
+    }
+}
+
+.load-overrides();

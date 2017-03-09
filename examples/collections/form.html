@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Form | Elements</title>
+    <link rel="stylesheet" type="text/css" href="../../all.css" />
+
+    <style>
+    .ui.grid .column {
+        padding-bottom: 2em;
+    }
+    </style>
+</head>
+
+<body>
+
+    <section class="ui medium padded section">
+        <div class="ui container">
+
+            <h2 class="ui headline">Form</h2>
+
+            <div class="ui form">
+                <div class="ui one medium-two large-three column grid">
+                    <div class="column">
+                        <input type="text" class="fluid" placeholder="Text" />
+                    </div>
+                    <div class="column">
+                        <input type="email" class="fluid" placeholder="Email" />
+                    </div>
+                    <div class="column">
+                        <input type="password" class="fluid" />
+                    </div>
+                    <div class="column">
+                        <input type="number" class="fluid" placeholder="Number" />
+                    </div>
+                    <div class="column">
+                        <input type="search" class="fluid" placeholder="Search" />
+                    </div>
+                    <div class="column">
+                        <input type="tel" class="fluid" placeholder="Telephone" />
+                    </div>
+                    <div class="column">
+                        <input type="url" class="fluid" placeholder="URL" />
+                    </div>
+                    <div class="column">
+                        <input type="checkbox" id="the_checkbox" /><label for="the_checkbox">Checkbox</label>
+                    </div>
+                    <div class="column">
+                        <input type="radio" id="the_radio_1" name="the_radio" value="1" /><label for="the_radio_1">Radio button 1</label><br/>
+                        <input type="radio" id="the_radio_2" name="the_radio" value="2" /><label for="the_radio_2">Radio button 2</label>
+                    </div>
+                    <div class="twelve wide column">
+                        <textarea class="fluid" placeholder="Textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="ui headline">Validation states</h3>
+
+            <div class="ui form">
+                <div class="ui one medium-two large-three column grid">
+                    <div class="column">
+                        <input type="text" class="fluid success" placeholder="Text" />
+                    </div>
+                    <div class="column">
+                        <input type="email" class="fluid warning" placeholder="Email" />
+                    </div>
+                    <div class="column">
+                        <input type="password" class="fluid error" />
+                    </div>
+                    <div class="twelve wide column">
+                        <textarea disabled class="fluid" placeholder="Textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="ui headline">Inputs with attachments</h3>
+
+            <div>
+                <div class="ui input">
+                    <span class="attachment">Name</span>
+                    <input type="text" />
+                </div>
+                <div class="ui input">
+                    <input type="text" />
+                    <span class="attachment">%</span>
+                </div>
+                <div class="ui fluid input">
+                    <input type="text" />
+                    <span class="attachment">%</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+</html>

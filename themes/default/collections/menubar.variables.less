@@ -1,0 +1,22 @@
+/* Menubar variables */
+
+@menubar-item-v-padding: 0.65em;
+@menubar-item-h-padding: 1em;
+@menubar-item-font-weight: @weight-bold;
+
+@menubar-item-color: @text-color;
+@menubar-item-background: transparent;
+@menubar-item-hover-color: darken(@text-color, 10%);
+@menubar-item-hover-background: rgba(0, 0, 0, 0.05);
+@menubar-item-active-color: @color-primary;
+@menubar-item-active-background: rgba(0, 0, 0, 0.05);
+
+@menubar-item-total-h-padding: @menubar-item-h-padding * 2;
+@menubar-item-line-width: e('calc(100% - @{menubar-item-total-h-padding})');
+@menubar-item-line-height: 2px;
+@menubar-item-line-color: transparent;
+@menubar-item-line-hover-color: rgba(0, 0, 0, 0.05);
+@menubar-item-line-active-color: @color-primary;
+
+@menubar-divider-size: @divider-size;
+@menubar-divider-color: @divider-color;

@@ -1,0 +1,43 @@
+@element: message;
+@type: view;
+
+@import (multiple) "../../theme.less";
+
+/* Message */
+
+.ui.message {
+    position: relative;
+    padding: @message-v-padding @message-h-padding;
+    background-color: @color-gray-background;
+    border: @message-border-width solid @color-gray;
+    color: rgba(0, 0, 0, 0.75);
+    border-radius: @message-border-radius;
+    margin: 1em 0;
+
+    &.primary {
+        background-color: @color-primary-background;
+        border-color: @color-primary;
+    }
+    &.secondary {
+        background-color: @color-secondary-background;
+        border-color: @color-secondary;
+    }
+    &.info {
+        background-color: @color-info-background;
+        border-color: @color-info;
+    }
+    &.success, &.positive {
+        background-color: @color-success-background;
+        border-color: @color-success;
+    }
+    &.warning {
+        background-color: @color-warning-background;
+        border-color: @color-warning;
+    }
+    &.danger, &.negative, &.error {
+        background-color: @color-danger-background;
+        border-color: @color-danger;
+    }
+}
+
+.load-overrides();

@@ -1,0 +1,49 @@
+@element: progress;
+@type: module;
+
+@import (multiple) "../../theme.less";
+
+/* Progress bar */
+
+.ui.progress {
+    height: @progress-size;
+    border-radius: @progress-border-radius;
+    background: @progress-background;
+    overflow: hidden;
+
+    .bar {
+        height: 100%;
+        color: white;
+        font-size: @progress-size * 0.75;
+        text-align: right;
+        padding-right: 5px;
+        font-weight: @weight-bold;
+    }
+
+    &.primary .bar, .bar.primary {
+        background-color: @color-primary;
+        .choose-fg(@color-primary, #fff, @text-color);
+    }
+    &.secondary .bar, .bar.secondary {
+        background-color: @color-secondary;
+        .choose-fg(@color-secondary, #fff, @text-color);
+    }
+    &.info .bar, .bar.info {
+        background-color: @color-info;
+        .choose-fg(@color-info, #fff, @text-color);
+    }
+    &.success .bar, .bar.success {
+        background-color: @color-success;
+        .choose-fg(@color-success, #fff, @text-color);
+    }
+    &.warning .bar, .bar.warning {
+        background-color: @color-warning;
+        .choose-fg(@color-warning, #fff, @text-color);
+    }
+    &.danger .bar, .bar.danger {
+        background-color: @color-danger;
+        .choose-fg(@color-danger, #fff, @text-color);
+    }
+}
+
+.load-overrides();

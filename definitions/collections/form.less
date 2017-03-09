@@ -1,0 +1,176 @@
+@element: form;
+@type: collection;
+
+@import (multiple) "../../theme.less";
+
+/* Forms */
+
+label {
+    cursor: pointer;
+}
+
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="url"],
+textarea {
+    -webkit-appearance: none;
+    outline: none;
+    background: @input-background;
+    border: @input-border-width solid @input-border-color;
+    padding: @input-v-padding @input-h-padding;
+    box-shadow: @input-box-shadow;
+    border-radius: @input-border-radius;
+    color: @input-color;
+    margin: 0;
+
+    transition: color 0.2s, background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+    &.fluid {
+        width: 100%;
+    }
+
+    &:focus {
+        background: @input-focus-background;
+        border-color: @input-focus-border-color;
+        box-shadow: @input-focus-box-shadow;
+        color: @input-focus-color;
+    }
+
+    &.success {
+        border-color: @color-success;
+        color: mix(@input-color, @color-success);
+    }
+
+    &.warning {
+        border-color: @color-warning;
+        color: mix(@input-color, @color-warning);
+    }
+
+    &.error {
+        border-color: @color-danger;
+        color: mix(@input-color, @color-danger);
+    }
+
+    &:disabled {
+        background: @input-disabled-background;
+        border-color: @input-disabled-border-color;
+        box-shadow: @input-disabled-box-shadow;
+        color: @input-disabled-color;
+    }
+}
+// TODO: Search
+
+input[type="checkbox"],
+input[type="radio"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    + label {
+        padding-left: 24px;
+        position: relative;
+
+        &:before, &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0; bottom: 0; left: 0;
+            margin: auto 0;
+        }
+
+        &:before {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ebebeb;
+            border-radius: 2px;
+        }
+
+        &:after {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+            background-color: @color-info;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+    }
+
+    &:checked + label:after {
+        opacity: 1;
+    }
+}
+
+input[type="radio"] + label {
+    &:before, &:after {
+        border-radius: 50%;
+    }
+
+    &:after {
+        width: 8px;
+        height: 8px;
+        margin: auto 4px;
+    }
+}
+
+// TODO: Check icon
+
+// TODO: Date/time fields
+
+// TODO: Special fields
+
+
+/* Input with attachements */
+
+.ui.input {
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    vertical-align: middle;
+
+    input {
+        border-radius: 0;
+    }
+
+    &.fluid {
+        display: -webkit-flex;
+        display: flex;
+        margin: 1em 0;
+
+        input {
+            flex-grow: 2;
+        }
+    }
+
+    > .attachment {
+        border: @input-attachment-border-width solid @input-attachment-border-color;
+        background: @input-attachment-background;
+        padding: @input-v-padding @input-h-padding;
+    }
+
+    > :first-child {
+        border-top-left-radius: @input-border-radius;
+        border-bottom-left-radius: @input-border-radius;
+    }
+
+    > :last-child {
+        border-top-right-radius: @input-border-radius;
+        border-bottom-right-radius: @input-border-radius;
+    }
+}
+
+.menubar > .item {
+    > input[type="email"],
+    > input[type="number"],
+    > input[type="password"],
+    > input[type="search"],
+    > input[type="tel"],
+    > input[type="text"],
+    > input[type="url"] {
+        margin: -@input-v-padding -@input-h-padding;
+    }
+}
+
+.load-overrides();

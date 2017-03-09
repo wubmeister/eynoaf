@@ -1,0 +1,57 @@
+@element: rangeslider;
+@type: module;
+
+@import (multiple) "../../theme.less";
+
+/* Range slider */
+
+.ui.rangeslider {
+    position: relative;
+    margin: 24px 0 10px 0;
+    height: @rangeslider-height;
+    background: @rangeslider-background;
+
+    .bar {
+        position: relative;
+        height: 100%;
+        background: @rangeslider-bar-background;
+    }
+
+    .handle {
+        position: absolute;
+        top: 50%;
+        width: @rangeslider-handle-size;
+        height: @rangeslider-handle-size;
+        margin-left: (-@rangeslider-handle-size / 2);
+        margin-top: (-@rangeslider-handle-size / 2);
+        border-radius: 50%;
+        cursor: -webkit-grab;
+        cursor: grab;
+    }
+
+    .label {
+        position: absolute;
+        top: -24px;
+        width: @rangeslider-label-width;
+        height: @rangeslider-label-height;
+        line-height: @rangeslider-label-height;
+        text-align: center;
+        margin-left: (-@rangeslider-label-width / 2);
+        background: @rangeslider-label-background;
+        color: @rangeslider-label-color;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            margin-left: -4px;
+            border-top: 4px solid @rangeslider-label-background;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }
+    }
+}
+
+.load-overrides();

@@ -1,0 +1,238 @@
+@element: button;
+@type: element;
+
+@import (multiple) "../../theme.less";
+
+/* Buttons */
+
+.ui.button {
+    display: inline-block;
+    margin: @button-margin;
+    padding: @button-v-padding @button-h-padding;
+    border-radius: @button-border-radius;
+    font-weight: @button-font-weight;
+    font-family: @button-font-family;
+    transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
+    background-color: transparent;
+    line-height: 1;
+    cursor: pointer;
+
+    &:not(.outline) {
+        background-color: @color-gray;
+
+        &.primary {
+            background-color: @color-primary;
+            .choose-fg(@color-primary, #fff, @text-color);
+
+            &:hover {
+                background-color: @color-primary-dark;
+            }
+        }
+
+        &.secondary {
+            background-color: @color-secondary;
+            .choose-fg(@color-secondary, #fff, @text-color);
+
+            &:hover {
+                background-color: @color-secondary-dark;
+            }
+        }
+
+        &.info {
+            background-color: @color-info;
+            .choose-fg(@color-info, #fff, @text-color);
+
+            &:hover {
+                background-color: @color-info-dark;
+            }
+        }
+
+        &.success, &.positive {
+            background-color: @color-success;
+            .choose-fg(@color-success, #fff, @text-color);
+
+            &:hover {
+                background-color: @color-success-dark;
+            }
+        }
+
+        &.warning {
+            background-color: @color-warning;
+            .choose-fg(@color-warning, #fff, @text-color);
+
+            &:hover {
+                background-color: @color-warning-dark;
+            }
+        }
+
+        &.danger, &.negative {
+            background-color: @color-danger;
+            .choose-fg(@color-danger, #fff, @text-color);
+
+            &:hover {
+                background-color: @color-danger-dark;
+            }
+        }
+
+        &.white {
+            background-color: white;
+            color: @text-color;
+
+            &:hover {
+                background-color: #fafafa;
+            }
+        }
+    }
+
+    &.outline {
+        &.primary {
+            box-shadow: inset 0 0 0 @button-outline-border-width @color-primary;
+            color: @color-primary;
+
+            &:hover {
+                box-shadow: inset 0 0 0 @button-outline-border-width @color-primary-dark;
+                color: @color-primary-dark;
+            }
+        }
+
+        &.secondary {
+            box-shadow: inset 0 0 0 @button-outline-border-width @color-secondary;
+            color: @color-secondary;
+
+            &:hover {
+                box-shadow: inset 0 0 0 @button-outline-border-width @color-secondary-dark;
+                color: @color-secondary-dark;
+            }
+        }
+
+        &.info {
+            box-shadow: inset 0 0 0 @button-outline-border-width @color-info;
+            color: @color-info;
+
+            &:hover {
+                box-shadow: inset 0 0 0 @button-outline-border-width @color-info-dark;
+                color: @color-info-dark;
+            }
+        }
+
+        &.success, &.positive {
+            box-shadow: inset 0 0 0 @button-outline-border-width @color-success;
+            color: @color-success;
+
+            &:hover {
+                box-shadow: inset 0 0 0 @button-outline-border-width @color-success-dark;
+                color: @color-success-dark;
+            }
+        }
+
+        &.warning {
+            box-shadow: inset 0 0 0 @button-outline-border-width @color-warning;
+            color: @color-warning;
+
+            &:hover {
+                box-shadow: inset 0 0 0 @button-outline-border-width @color-warning-dark;
+                color: @color-warning-dark;
+            }
+        }
+
+        &.danger, &.negative {
+            box-shadow: inset 0 0 0 @button-outline-border-width @color-danger;
+            color: @color-danger;
+
+            &:hover {
+                box-shadow: inset 0 0 0 @button-outline-border-width @color-danger-dark;
+                color: @color-danger-dark;
+            }
+        }
+
+        &.white {
+            box-shadow: inset 0 0 0 @button-outline-border-width rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.85);
+
+            &:hover {
+                box-shadow: inset 0 0 0 @button-outline-border-width #fff;
+                color: #fff;
+            }
+        }
+    }
+}
+
+button.ui.button, input.ui.button {
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+}
+a.ui.button {
+    text-decoration: none;
+}
+
+.ui.buttons {
+    display: -webkit-inline-flex;
+    display: inline-flex;
+
+    .ui.button {
+        border-radius: 0;
+        margin: 0;
+
+        &:first-child {
+            border-top-left-radius: @button-border-radius;
+            border-bottom-left-radius: @button-border-radius;
+        }
+
+        &:last-child {
+            border-top-right-radius: @button-border-radius;
+            border-bottom-right-radius: @button-border-radius;
+        }
+    }
+}
+
+.menubar > .item > .ui.button {
+    margin: -@button-v-padding -@button-h-padding;
+}
+
+.ui.card .ui.button {
+    margin-left: 0;
+    margin-bottom: @button-margin !important;
+}
+
+/* Close button */
+
+.close.button {
+    position: absolute;
+    top: @half-spacing; right: @half-spacing;
+    width: @close-button-size;
+    height: @close-button-size;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+
+    &:before, &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        background-color: currentColor;
+        top: 50%; right: 0; left: 0;
+        height: 2px;
+        margin-top: -1px;
+    }
+
+    &:before {
+        transform: rotate(45deg);
+    }
+
+    &:after {
+        transform: rotate(135deg);
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+button.close.button {
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.load-overrides();

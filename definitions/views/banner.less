@@ -1,0 +1,91 @@
+@element: banner;
+@type: view;
+
+@import (multiple) "../../theme.less";
+
+/* Banners */
+
+.ui.banner {
+    position: relative;
+    height: 250px;
+
+    // TODO: Banner size
+
+    .image {
+        position: absolute;
+        background-size: cover;
+        background-position: center center;
+        top: 0; right: 0; bottom: 0; left: 0;
+        opacity: 0.75;
+        transition: opacity 0.2s;
+    }
+
+    .caption {
+        position: absolute;
+        background: fade(@banner-caption-background-color, 75%);
+        color: @banner-caption-color;
+        padding: @banner-caption-padding;
+        z-index: 1;
+
+        &.top {
+            top: 0; right: 0; left: 0;
+
+            & when (@banner-caption-gradient = true) {
+                background: linear-gradient(
+                    to bottom,
+                    fade(@banner-caption-background-color, 75%),
+                    fade(@banner-caption-background-color, 0%));
+            }
+        }
+
+        &.right {
+            top: 0; right: 0; bottom: 0;
+            text-align: right;
+
+            & when (@banner-caption-gradient = true) {
+                background: linear-gradient(
+                    to right,
+                    fade(@banner-caption-background-color, 0%),
+                    fade(@banner-caption-background-color, 75%));
+            }
+        }
+
+        &.bottom {
+            right: 0; bottom: 0; left: 0;
+
+            & when (@banner-caption-gradient = true) {
+                background: linear-gradient(
+                    to bottom,
+                    fade(@banner-caption-background-color, 0%),
+                    fade(@banner-caption-background-color, 75%));
+            }
+        }
+
+        &.left {
+            top: 0; bottom: 0; left: 0;
+
+            & when (@banner-caption-gradient = true) {
+                background: linear-gradient(
+                    to right,
+                    fade(@banner-caption-background-color, 75%),
+                    fade(@banner-caption-background-color, 0%));
+            }
+        }
+
+        :first-child {
+            margin-top: 0;
+        }
+
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &[href]:hover {
+        .image {
+            opacity: 0.9;
+        }
+    }
+}
+
+.load-overrides();

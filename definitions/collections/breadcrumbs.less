@@ -1,0 +1,40 @@
+@element: breadcrumbs;
+@type: collection;
+
+@import (multiple) "../../theme.less";
+
+/* Breadcrumbs */
+
+.ui.breadcrumbs {
+    display: -webkit-flex;
+    display: flex;
+    margin: 1em 0;
+    padding: 0;
+
+    a {
+        text-decoration: none;
+    }
+
+    &.inline {
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        margin: 0;
+    }
+
+    > .item {
+        display: block;
+
+        + .item {
+            margin-left: @breadcrumbs-spacing;
+
+            &:before {
+                content: @breadcrumbs-separator;
+                display: inline-block;
+                margin-right: @breadcrumbs-spacing;
+                color: @breadcrumbs-separator-color;
+            }
+        }
+    }
+}
+
+.load-overrides();

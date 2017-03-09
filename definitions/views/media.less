@@ -1,0 +1,58 @@
+@element: media;
+@type: view;
+
+@import (multiple) "../../theme.less";
+
+/* Media object */
+
+.ui.media {
+
+    position: relative;
+
+    .image {
+        width: 40%;
+        float: right;
+        padding: 0 0 @half-spacing @half-spacing;
+
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    + .ui.media {
+        margin-top: @spacing;
+        padding-top: @spacing;
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0; right: @half-spacing; left: @half-spacing;
+            height: @media-divider-size;
+            background-color: @media-divider-color;
+        }
+    }
+
+    @media screen and (min-width: @medium-breakpoint) {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        margin: 0 -@half-spacing;
+
+        .image, .content {
+            padding: 0 @half-spacing;
+        }
+
+        .image {
+            width: 16.66667%;
+        }
+
+        .content {
+            width: 83.33333%;
+        }
+    }
+}
+
+.load-overrides();

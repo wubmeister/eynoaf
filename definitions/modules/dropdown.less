@@ -1,0 +1,37 @@
+@element: dropdown;
+@type: module;
+
+@import (multiple) "../../theme.less";
+
+/* Dropdown */
+
+.ui.dropdown {
+    display: inline-block;
+}
+.ui.dropdown, .ui.menubar > .dropdown.item {
+    position: relative;
+
+    > .ui.menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 100%;
+        white-space: nowrap;
+        background: @dropdown-menu-background;
+        box-shadow: @dropdown-menu-box-shadow;
+        transform: translateY(-10px);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 10;
+
+        transition: transform 0.3s, opacity 0.3s;
+    }
+
+    &:hover > .ui.menu {
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.load-overrides();

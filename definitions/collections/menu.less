@@ -1,0 +1,70 @@
+@element: menu;
+@type: collection;
+
+@import (multiple) "../../theme.less";
+
+/* Menu (list) */
+
+.ui.menu {
+    margin: 0;
+    padding: @menu-padding-top 0 @menu-padding-bottom 0;
+
+    > .item, > .item > a {
+        display: block;
+        padding: @menu-item-v-padding @menu-item-h-padding;
+        font-weight: @menu-item-font-weight;
+    }
+
+    > .item {
+        position: relative;
+        background: @menu-item-background;
+        transition: color 0.2s, background-color 0.2s;
+
+        > a {
+            transition: color 0.2s;
+        }
+
+        &, > a {
+            color: @menu-item-color;
+            text-decoration: none;
+        }
+    }
+
+    > .item:hover {
+        background: @menu-item-hover-background;
+
+        &, > a {
+            color: @menu-item-hover-color;
+        }
+    }
+
+    > .item.active {
+        background: @menu-item-active-background;
+
+        &, > a {
+            color: @menu-item-active-color;
+        }
+    }
+
+    > .item > a {
+        margin: -@menu-item-v-padding -@menu-item-h-padding;
+    }
+
+    > .divider {
+        margin: @menu-padding-top 0 @menu-padding-bottom 0;
+        height: @menu-divider-size;
+        background-color: @menu-divider-color;
+    }
+
+    &.divided > .item + .item {
+        border-top: @menu-divider-size solid @menu-divider-color;
+    }
+}
+ul.ui.menu, ol.ui.menu {
+    list-style: none;
+}
+
+// TODO: Accordion menu
+// TODO: Drilldown menu
+
+.load-overrides();

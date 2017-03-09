@@ -1,0 +1,56 @@
+@element: topbar;
+@type: module;
+
+@import (multiple) "../../theme.less";
+
+/* Topbar */
+
+.ui.topbar {
+    position: relative;
+    background: @topbar-background;
+    color: @topbar-color;
+    box-shadow: @topbar-box-shadow;
+    transition: color 0.3s, background 0.3s, box-shadow 0.3s;
+
+    &.fixed {
+        position: fixed;
+    }
+
+    &.absolute {
+        position: absolute;
+    }
+
+    &.fixed, &.absolute {
+        top: 0; right: 0; left: 0;
+        z-index: 100;
+    }
+
+    &.flex > .ui.container {
+        height: 100%;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -webkit-align-items: center;
+        align-items: center;
+        padding: @half-spacing;
+    }
+
+    > .meta {
+        background: @topbar-meta-background;
+        color: @topbar-meta-color;
+        font-size: @topbar-meta-font-size;
+
+        > .container {
+            padding: (@half-spacing/4) @half-spacing;
+        }
+    }
+
+    &.scrolled {
+        background: @topbar-scrolled-background;
+        color: @topbar-scrolled-color;
+        box-shadow: @topbar-scrolled-box-shadow;
+    }
+}
+
+.load-overrides();

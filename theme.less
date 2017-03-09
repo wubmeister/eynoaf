@@ -1,0 +1,35 @@
+
+@grid: "default";
+@form: "default";
+@form: "default";
+@form: "default";
+@globals: "default";
+@button: "default";
+@menubar: "default";
+@menu: "default";
+@dropdown: "default";
+@pagination: "default";
+@breadcrumbs: "default";
+@topbar: "default";
+@accordion: "default";
+@message: "default";
+@card: "default";
+@media: "default";
+@table: "default";
+@tabs: "default";
+@badge: "default";
+@label: "default";
+@progress: "default";
+@banner: "default";
+@rangeslider: "default";
+@segmented: "default";
+/**/
+
+@theme: @@element;
+
+@import "themes/@{theme}/globals.variables.less";
+@import "themes/@{theme}/@{type}s/@{element}.variables.less";
+
+.load-overrides() {
+    @import "themes/@{theme}/@{type}s/@{element}.overrides.less";
+}

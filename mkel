@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ ! -d definitions/$1s ]; then
+    mkdir definitions/$1s
+fi
+
+echo "@element: $2;" > definitions/$1s/$2.less
+echo "@type: $1;" >> definitions/$1s/$2.less
+echo "" >> definitions/$1s/$2.less
+echo "@import (multiple) \"../../theme.less\";" >> definitions/$1s/$2.less
+echo "" >> definitions/$1s/$2.less
+echo "" >> definitions/$1s/$2.less
+echo "" >> definitions/$1s/$2.less
+echo ".load-overrides();" >> definitions/$1s/$2.less
+
+if [ ! -d themes/default/$1s ]; then
+    mkdir themes/default/$1s
+fi
+touch themes/default/$1s/$2.variables.less
+touch themes/default/$1s/$2.overrides.less
+
+NEWLINE=$'\\\n'
+sed -i '' -e "s/\/\*\*\//@$2: \"default\";$NEWLINE\/\*\*\//g" theme.less
+sed -i '' -e "s/\/\*\*\//\& { @import \"definitions\/$1s\/$2.less\"; }$NEWLINE\/\*\*\//g" all.less

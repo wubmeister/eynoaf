@@ -1,0 +1,95 @@
+@element: menubar;
+@type: collection;
+
+@import (multiple) "../../theme.less";
+
+/* Menu bar */
+
+.ui.menubar {
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-align-items: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    &.fluid {
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    > .item, > .item  > a {
+        display: block;
+        padding: @menubar-item-v-padding @menubar-item-h-padding;
+        text-decoration: none;
+        font-weight: @menubar-item-font-weight;
+    }
+
+    > .item {
+        position: relative;
+        background: @menubar-item-background;
+
+        > a {
+            transition: color 0.2s;
+        }
+
+        &, > a {
+            transition: color 0.2s, background-color 0.2s;
+            color: @menubar-item-color;
+        }
+    }
+
+    > .item > a {
+        margin: -@menubar-item-v-padding -@menubar-item-h-padding;
+    }
+
+    > a.item:hover, > li.item:hover > a {
+        background: @menubar-item-hover-background;
+        color: @menubar-item-hover-color;
+    }
+
+    > .item.active {
+        background: @menubar-item-active-background;
+
+        &, > a {
+            color: @menubar-item-active-color;
+        }
+    }
+
+    &.line {
+        > .item {
+            &, & > a {
+                background: none !important;
+            }
+
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                right: 0; bottom: 0; left: 0;
+                width: @menubar-item-line-width;
+                height: @menubar-item-line-height;
+                margin: 0 auto;
+                background-color: @menubar-item-line-color;
+            }
+
+            &:hover:after {
+                background-color: @menubar-item-line-hover-color;
+            }
+
+            &.active:after {
+                background-color: @menubar-item-line-active-color;
+            }
+        }
+    }
+
+    &.divided > .item + .item {
+        border-left: @menubar-divider-size solid @menubar-divider-color;
+    }
+}
+
+.topbar .ui.menubar {
+    margin: 0 -@menubar-item-h-padding;
+}
+
+.load-overrides();

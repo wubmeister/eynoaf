@@ -1,0 +1,106 @@
+/* Global variables */
+
+@body-font-family: 'Merriweather', serif;
+@headline-font-family: 'PT Sans', sans-serif;
+
+@spacing: 2rem;
+@half-spacing: @spacing/2;
+@medium-breakpoint: 700px;
+@large-breakpoint: 960px;
+
+@text-color: #333;
+
+@color-primary: #0D1BD7;
+@color-primary-dark: #0006B1;
+@color-primary-light: #2937FD;
+@color-primary-background: #E6E7FF;
+@color-secondary: #02BB71;
+@color-secondary-dark: #009554;
+@color-secondary-light: #19E191;
+@color-secondary-background: #E6FFF5;
+@color-info: #5DDCFF;
+@color-info-dark: #39B6D9;
+@color-info-light: #88FFFF;
+@color-info-background: #E6F9FF;
+@color-success: #08C80E;
+@color-success-dark: #00A200;
+@color-success-light: #21EE28;
+@color-success-background: #E6FFE6;
+@color-warning: #EA951A;
+@color-warning-dark: #C47502;
+@color-warning-light: #FFB839;
+@color-warning-background: #FFF5E6;
+@color-danger: #BB2002;
+@color-danger-dark: #950D00;
+@color-danger-light: #E13919;
+@color-danger-background: #FFEAE6;
+@color-gray: #A0A0A0;
+@color-gray-dark: #7A6E6E;
+@color-gray-light: #C6DADA;
+@color-gray-background: #E6E6E6;
+
+@weight-bold: 700;
+
+@line-height: 1.375;
+@medium-line-height: 1.375;
+@small-line-height: 1.25;
+
+@h1-size: 3rem;
+@h1-line-height: 1.05;
+@h1-medium-size: 2.5rem;
+@h1-medium-line-height: 1.125;
+@h1-small-size: 2rem;
+@h1-small-line-height: 1.25;
+
+@h2-size: 2.25rem;
+@h2-line-height: 1.25;
+@h2-medium-size: 2rem;
+@h2-medium-line-height: 1.25;
+@h2-small-size: 1.625rem;
+@h2-small-line-height: 1.15385;
+
+@h3-size: 1.75rem;
+@h3-line-height: 1.25;
+@h3-medium-size: 1.5rem;
+@h3-medium-line-height: 1.25;
+@h3-small-size: 1.375rem;
+@h3-small-line-height: 1.13636;
+
+@h4-size: 1.125rem;
+@h4-line-height: 1.22222;
+@h4-medium-size: 1.125rem;
+@h4-medium-line-height: 1.2222;
+@h4-small-size: 1.125rem;
+@h4-small-line-height: 1.11111;
+
+@h5-size: 1rem;
+@h5-line-height: 1.375;
+@h5-medium-size: 1rem;
+@h5-medium-line-height: 1.375;
+@h5-small-size: 1rem;
+@h5-small-line-height: 1.25;
+
+@h6-size: 1rem;
+@h6-line-height: 1.375;
+@h6-medium-size: 1rem;
+@h6-medium-line-height: 1.375;
+@h6-small-size: 1rem;
+@h6-small-line-height: 1.25;
+
+@border-radius: 2px;
+@border-size: 1px;
+@divider-size: 1px;
+@divider-color: rgba(0, 0, 0, 0.06);
+
+/* Mixins */
+
+.choose-fg(@bg, @fg-light: #fff, @fg-dark: #000) {
+    @lightness: luma(@bg);
+
+    & when (@lightness < 50%) {
+        color: @fg-light;
+    }
+    & when (@lightness >= 50%) {
+        color: @fg-dark;
+    }
+}

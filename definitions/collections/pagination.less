@@ -1,0 +1,70 @@
+@element: pagination;
+@type: collection;
+
+@import (multiple) "../../theme.less";
+
+/* Pagination */
+
+.ui.pagination {
+    display: -webkit-flex;
+    display: flex;
+    margin: 1em 0;
+    padding: 0;
+
+    a {
+        text-decoration: none;
+    }
+
+    &.inline {
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        margin: 0;
+    }
+
+    > .item, > .item > a, > .dots {
+        display: block;
+        text-align: center;
+        margin-right: @pagination-spacing;
+        width: @pagination-width;
+        height: @pagination-height;
+        line-height: @pagination-height;
+    }
+
+    > .item {
+        box-shadow: inset 0 0 0 @pagination-border-width @pagination-border-color;
+        transition: box-shadow 0.2s, color 0.2s;
+        border-radius: @pagination-border-radius;
+
+        &, > a {
+            color: @pagination-color;
+        }
+
+        &:hover {
+            box-shadow: inset 0 0 0 @pagination-border-width @pagination-hover-border-color;
+            &, > a {
+                color: @pagination-hover-color;
+            }
+        }
+
+        &.active {
+            box-shadow: inset 0 0 0 @pagination-border-width @pagination-active-border-color;
+            &, > a {
+                color: @pagination-active-color;
+            }
+        }
+
+        &.disabled {
+            box-shadow: inset 0 0 0 @pagination-border-width @pagination-disabled-border-color;
+            &, > a {
+                color: @pagination-disabled-color;
+            }
+        }
+    }
+
+    > .dots:after {
+        content: "...";
+        display: inline;
+    }
+}
+
+.load-overrides();

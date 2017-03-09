@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Tabs | Elements</title>
+    <link rel="stylesheet" type="text/css" href="../../all.css" />
+
+    <style>
+    .ui.tabs {
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
+        margin-bottom: 1rem;
+    }
+    </style>
+</head>
+
+<body>
+
+    <section class="ui medium padded section">
+        <div class="ui container">
+
+            <h2 class="ui headline">Tabs</h2>
+
+            <h3 class="ui headline">Top tabs</h3>
+
+            <div class="ui top tabs">
+                <div class="tabbar">
+                    <a class="active tab" data-tab="one">One</a>
+                    <a class="tab" data-tab="two">Two</a>
+                    <a class="tab" data-tab="three">Three</a>
+                </div>
+                <div class="panels">
+                    <div class="active panel" data-tab="one">One</div>
+                    <div class="panel" data-tab="two">Two</div>
+                    <div class="panel" data-tab="three">Three</div>
+                </div>
+            </div>
+
+            <div class="ui top tabs">
+                <div class="striped tabbar">
+                    <a class="active tab" data-tab="one">One</a>
+                    <a class="tab" data-tab="two">Two</a>
+                    <a class="tab" data-tab="three">Three</a>
+                </div>
+                <div class="panels">
+                    <div class="active panel" data-tab="one">One</div>
+                    <div class="panel" data-tab="two">Two</div>
+                    <div class="panel" data-tab="three">Three</div>
+                </div>
+            </div>
+
+            <h3 class="ui headline">Right tabs</h3>
+
+            <div class="ui right tabs">
+                <div class="tabbar">
+                    <a class="active tab" data-tab="one">One</a>
+                    <a class="tab" data-tab="two">Two</a>
+                    <a class="tab" data-tab="three">Three</a>
+                </div>
+                <div class="panels">
+                    <div class="active panel" data-tab="one">One</div>
+                    <div class="panel" data-tab="two">Two</div>
+                    <div class="panel" data-tab="three">Three</div>
+                </div>
+            </div>
+
+            <div class="ui right tabs">
+                <div class="striped tabbar">
+                    <a class="active tab" data-tab="one">One</a>
+                    <a class="tab" data-tab="two">Two</a>
+                    <a class="tab" data-tab="three">Three</a>
+                </div>
+                <div class="panels">
+                    <div class="active panel" data-tab="one">One</div>
+                    <div class="panel" data-tab="two">Two</div>
+                    <div class="panel" data-tab="three">Three</div>
+                </div>
+            </div>
+
+            <h3 class="ui headline">Bottom tabs</h3>
+
+            <div class="ui bottom tabs">
+                <div class="tabbar">
+                    <a class="active tab" data-tab="one">One</a>
+                    <a class="tab" data-tab="two">Two</a>
+                    <a class="tab" data-tab="three">Three</a>
+                </div>
+                <div class="panels">
+                    <div class="active panel" data-tab="one">One</div>
+                    <div class="panel" data-tab="two">Two</div>
+                    <div class="panel" data-tab="three">Three</div>
+                </div>
+            </div>
+
+            <div class="ui bottom tabs">
+                <div class="striped tabbar">
+                    <a class="active tab" data-tab="one">One</a>
+                    <a class="tab" data-tab="two">Two</a>
+                    <a class="tab" data-tab="three">Three</a>
+                </div>
+                <div class="panels">
+                    <div class="active panel" data-tab="one">One</div>
+                    <div class="panel" data-tab="two">Two</div>
+                    <div class="panel" data-tab="three">Three</div>
+                </div>
+            </div>
+
+            <h3 class="ui headline">Left tabs</h3>
+
+            <div class="ui left tabs">
+                <div class="tabbar">
+                    <a class="active tab" data-tab="one">One</a>
+                    <a class="tab" data-tab="two">Two</a>
+                    <a class="tab" data-tab="three">Three</a>
+                </div>
+                <div class="panels">
+                    <div class="active panel" data-tab="one">One</div>
+                    <div class="panel" data-tab="two">Two</div>
+                    <div class="panel" data-tab="three">Three</div>
+                </div>
+            </div>
+
+            <div class="ui left tabs">
+                <div class="striped tabbar">
+                    <a class="active tab" data-tab="one">One</a>
+                    <a class="tab" data-tab="two">Two</a>
+                    <a class="tab" data-tab="three">Three</a>
+                </div>
+                <div class="panels">
+                    <div class="active panel" data-tab="one">One</div>
+                    <div class="panel" data-tab="two">Two</div>
+                    <div class="panel" data-tab="three">Three</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<script src="../../js/ui.js"></script>
+<script src="../../js/tabs.js"></script>
+<script>
+var nodes;
+
+nodes = document.querySelectorAll('.ui.tabs');
+forEach(nodes, function (node) {
+    new Tabs(node);
+});
+</script>
+
+</body>
+
+</html>

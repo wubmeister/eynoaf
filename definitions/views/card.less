@@ -1,0 +1,37 @@
+@element: card;
+@type: view;
+
+@import (multiple) "../../theme.less";
+
+/* Card */
+
+.ui.card {
+    display: block;
+    background: @card-background;
+    box-shadow: @card-box-shadow;
+
+    .content {
+        padding: @card-v-padding @card-h-padding;
+
+        :first-child {
+            margin-top: 0;
+        }
+
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .content, .image {
+        + .content, + .image {
+            border-top: @card-divider-size solid @card-divider-color;
+        }
+    }
+
+    .image img {
+        display: block;
+        width: 100%;
+    }
+}
+
+.load-overrides();

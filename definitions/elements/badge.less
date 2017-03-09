@@ -1,0 +1,51 @@
+@element: badge;
+@type: element;
+
+@import (multiple) "../../theme.less";
+
+/* Badge */
+
+.ui.badge {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.65em;
+    min-width: 2em;
+    height: 2em;
+    line-height: 2;
+    border-radius: 1em;
+    text-align: center;
+    font-weight: @weight-bold;
+    padding: 0 4px;
+
+    &.primary {
+        background-color: @color-primary;
+        .choose-fg(@color-primary, #fff, @text-color);
+    }
+
+    &.secondary {
+        background-color: @color-secondary;
+        .choose-fg(@color-secondary, #fff, @text-color);
+    }
+
+    &.info {
+        background-color: @color-info;
+        .choose-fg(@color-info, #fff, @text-color);
+    }
+
+    &.success, &.positive {
+        background-color: @color-success;
+        .choose-fg(@color-success, #fff, @text-color);
+    }
+
+    &.warning {
+        background-color: @color-warning;
+        .choose-fg(@color-warning, #fff, @text-color);
+    }
+
+    &.danger, &.negative {
+        background-color: @color-danger;
+        .choose-fg(@color-danger, #fff, @text-color);
+    }
+}
+
+.load-overrides();
