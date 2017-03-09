@@ -1,0 +1,44 @@
+@element: tooltip;
+@type: module;
+
+@import (multiple) "../../theme.less";
+
+.ui-tooltipped {
+    position: relative;
+}
+.ui.tooltip {
+    position: absolute;
+    display: block;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+
+    background: @tooltip-background;
+    color: @tooltip-color;
+    padding: @tooltip-v-padding @tooltip-h-padding;
+    font-size: @tooltip-font-size;
+    border-radius: @tooltip-border-radius;
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -@tooltip-arrow-size;
+        left: 50%;
+        margin-left: -@tooltip-arrow-size;
+        border-top: @tooltip-arrow-size solid @tooltip-background;
+        border-right: @tooltip-arrow-size solid transparent;
+        border-left: @tooltip-arrow-size solid transparent;
+    }
+}
+.ui-tooltipped:hover .ui.tooltip {
+    opacity: 1;
+    transform: translateX(-50%);
+}
+
+.load-overrides();
