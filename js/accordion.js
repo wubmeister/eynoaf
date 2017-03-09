@@ -1,7 +1,8 @@
 function Accordion(element, options) {
 
-	var titles;
+	var titles = [];
 
+	options = options || {};
 	UI.collectOptions(options, element, {
 		allowMultiOpen: false
 	});
@@ -10,16 +11,22 @@ function Accordion(element, options) {
 	 * Collect all titles and their content elements
 	 */
 	function collect() {
-		var content;
+		var title, oldDuration, style;
 
 		forEach(element, function (child) {
 			if (child.classList.contains('title')) {
-				content = child.nextSibling;
-				while (content && !content.classList.contains('title') && !content.classList.contains('content')) {
-					content = content.nextSibling;
-				}
-				if (content.classList.contains('content')) {
-					child._accordionContent = content;
+				title = child;
+				title._accordionInit = false;
+				titles.push(title);
+			} else if (child.classList.contains('content')) {
+				if (title) {
+					title._accordionContent = child;
+					if (!child.classList.contains('active')) {
+						style = getComputedStyle(child);
+						child.classList.add('noanim');
+						child.style.height = 0;
+						child.classList.remove('noanim');
+					}
 				}
 			}
 		});
@@ -28,13 +35,13 @@ function Accordion(element, options) {
 	/**
 	 * Attach a click event to each title
 	 */
-	funciton addEventListeners() {
-		foreach (titles, function (title) {
+	function addEventListeners() {
+		forEach(titles, function (title) {
 			if (!title._accordionInit) {
 				title.addEventListener('click', onTitleClick);
 				title._accordionInit = true;
 			}
-		}
+		});
 	}
 
 	/**
@@ -71,9 +78,9 @@ function Accordion(element, options) {
 			// title._accordionContent.style.transitionDuration = '0';
 			title._accordionContent.style.height = title._accordionContent.scrollHeight + 'px';
 			setTimeout(function () {
-				title._accordionContent.style.transitionDuration = '0';
+				title._accordionContent.classList.add('noanim');
 				title._accordionContent.style.height = 'auto';
-				title._accordionContent.style.transitionDuration = duration + 'ms';
+				title._accordionContent.classList.remove('noanim');
 			}, duration);
 		}
 	}
@@ -81,7 +88,7 @@ function Accordion(element, options) {
 	/**
 	 * Deactivates a title and collapses its corresponding contents
 	 */
-	function openTitle(title) {
+	function closeTitle(title) {
 		var duration;
 
 		title.classList.remove('active');
@@ -89,10 +96,10 @@ function Accordion(element, options) {
 			title._accordionContent.classList.remove('active');
 			duration = UI.getTransitionDuration(title._accordionContent);
 
-			title._accordionContent.style.transitionDuration = '0';
+			title._accordionContent.classList.add('noanim');
 			title._accordionContent.style.height = title._accordionContent.scrollHeight + 'px';
 			setTimeout(function () {
-				title._accordionContent.style.transitionDuration = duration + 'ms';
+				title._accordionContent.classList.remove('noanim');
 				title._accordionContent.style.height = 0;
 			}, 10);
 		}
@@ -102,5 +109,7 @@ function Accordion(element, options) {
 		collect();
 		addEventListeners();
 	};
+
+	this.recollect();
 
 }

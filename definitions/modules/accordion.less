@@ -7,47 +7,29 @@
 
 .ui.accordion {
     .title {
-        .dropdown.icon {
-            float: left;
-            position: relative;
-            width: 4px;
-            height: 1em;
+        cursor: pointer;
+
+        .caret {
             transition: transform 0.3s;
 
-            &:after {
-                content: "";
-                display: block;
-                position: absolute;
-                top: 50%; left: 0;
-                margin-top: -4px;
-                border-top: 4px solid transparent;
-                border-left: 4px solid currentColor;
-                border-top: 4px solid transparent;
-            }
-
             &.right {
-                float:right;
-
-                &:after {
-                    border-left: none;
-                    border-right: 4px solid currentColor;
-                }
+                float: right;
+                transform: rotate(180deg);
             }
+        }
 
-            &.active {
-                .dropdown.icon {
-                    transform: rotate(90deg);
-
-                    &.right {
-                        transform: rotate(-90deg);
-                    }
-                }
-            }
+        &.active .caret {
+            transform: rotate(90deg);
         }
     }
 
     .content {
-        transtition: height 0.3s cubic-bezier(0.65, 0, 0, 1);
+        transition: height 0.3s cubic-bezier(0.65, 0, 0, 1);
+        overflow: hidden;
+
+        &.noanim {
+            transition: none;
+        }
     }
 }
 

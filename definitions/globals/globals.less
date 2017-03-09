@@ -297,8 +297,8 @@ h6.ui.headline {
     display: inline-block;
     width: 1em;
     height: 1em;
-    vertical-align: middle;
     position: relative;
+    top: 2px;
 
     &:after {
         content: "";
@@ -308,7 +308,7 @@ h6.ui.headline {
         left: 50%;
         width: 0;
         height: 0;
-        margin-top: (-@caret-size / 2);
+        margin-top: (-@caret-size);
         margin-left: (-@caret-size / 2);
         border-top: @caret-size solid transparent;
         border-bottom: @caret-size solid transparent;
@@ -318,6 +318,10 @@ h6.ui.headline {
 
 .ui.dropdown .caret, .ui.menubar > .dropdown.item .caret {
     transform: rotate(90deg);
+}
+
+.ui.accordion .title .caret {
+    margin-left: (-(0.75em - @caret-size) / 2);
 }
 
 

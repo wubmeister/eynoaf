@@ -38,7 +38,7 @@ var UI = {
 		style = getComputedStyle(element);
 		durations = style.transitionDuration.split(/\s*,\s*/).map(function (d) { return parseFloat(d) * 1000; });
 		delays = style.transitionDuration.split(/\s*,\s*/).map(function (d) { return parseFloat(d) * 1000; });
-
+console.log(durations, delays);
 		max = 0;
 		for (i = 0; i < durations.length; i++) {
 			if (durations[i] + delays[i] > max) {
@@ -70,19 +70,25 @@ function forEach(collection, callback) {
 		collection.forEach(callback);
 	} else if (collection instanceof NodeList) {
 		for (index = 0; index < collection.length; index++) {
-			callback(collection[index], index, collection);
+			if (callback(collection[index], index, collection) === false) {
+				break;
+			}
 		}
 	} else if (collection instanceof Element) {
 		index = 0;
 		for (child = collection.firstChild; child; child = child.nextSibling) {
 			if (child.nodeType == Node.ELEMENT_NODE) {
-				callback(child, index, collection);
+				if (callback(child, index, collection) === false) {
+					break;
+				}
 				index++;
 			}
 		}
 	} else {
 		for (index in collection) {
-			callback(collection[index], index, collection);
+			if (callback(collection[index], index, collection) === false) {
+				break;
+			}
 		}
 	}
 }

@@ -331,8 +331,8 @@ h6.ui.headline {
   display: inline-block;
   width: 1em;
   height: 1em;
-  vertical-align: middle;
   position: relative;
+  top: 2px;
 }
 .caret:after {
   content: "";
@@ -342,15 +342,18 @@ h6.ui.headline {
   left: 50%;
   width: 0;
   height: 0;
-  margin-top: -2px;
-  margin-left: -2px;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-left: 4px solid currentColor;
+  margin-top: -0.3125em;
+  margin-left: -0.15625em;
+  border-top: 0.3125em solid transparent;
+  border-bottom: 0.3125em solid transparent;
+  border-left: 0.3125em solid currentColor;
 }
 .ui.dropdown .caret,
 .ui.menubar > .dropdown.item .caret {
   transform: rotate(90deg);
+}
+.ui.accordion .title .caret {
+  margin-left: -0.21875em;
 }
 /* Responsive embed */
 .ui.embed {
@@ -1392,38 +1395,25 @@ ol.ui.menu {
 /* Global variables */
 /* Mixins */
 /* Accordion */
-.ui.accordion .title .dropdown.icon {
-  float: left;
-  position: relative;
-  width: 4px;
-  height: 1em;
+.ui.accordion .title {
+  cursor: pointer;
+}
+.ui.accordion .title .caret {
   transition: transform 0.3s;
 }
-.ui.accordion .title .dropdown.icon:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  margin-top: -4px;
-  border-left: 4px solid currentColor;
-  border-top: 4px solid transparent;
-}
-.ui.accordion .title .dropdown.icon.right {
+.ui.accordion .title .caret.right {
   float: right;
+  transform: rotate(180deg);
 }
-.ui.accordion .title .dropdown.icon.right:after {
-  border-left: none;
-  border-right: 4px solid currentColor;
-}
-.ui.accordion .title .dropdown.icon.active .dropdown.icon {
+.ui.accordion .title.active .caret {
   transform: rotate(90deg);
 }
-.ui.accordion .title .dropdown.icon.active .dropdown.icon.right {
-  transform: rotate(-90deg);
-}
 .ui.accordion .content {
-  transtition: height 0.3s cubic-bezier(0.65, 0, 0, 1);
+  transition: height 0.3s cubic-bezier(0.65, 0, 0, 1);
+  overflow: hidden;
+}
+.ui.accordion .content.noanim {
+  transition: none;
 }
 /**/
 /* Global variables */
