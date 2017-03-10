@@ -25,6 +25,7 @@ a img {
 /**/
 /* Global variables */
 /* Mixins */
+/* Prelude variables */
 /* Container variables */
 /* Section variables */
 /* Bordered image variables */
@@ -146,39 +147,71 @@ a img {
 /* Background classes */
 .bg-primary {
   background-color: #136DFB;
+  color: white;
 }
 .bg-primary-light {
   background-color: #338FFF;
+  color: white;
+}
+.bg-primary-dark {
+  background-color: #004FD5;
+  color: white;
 }
 .bg-secondary {
   background-color: #42E78A;
+  color: #333;
 }
 .bg-secondary-light {
   background-color: #68FFB0;
+  color: #333;
+}
+.bg-secondary-dark {
+  background-color: #24C168;
+  color: white;
 }
 .bg-info {
   background-color: #669DF4;
+  color: white;
 }
 .bg-info-light {
   background-color: #92C7FF;
+  color: #333;
+}
+.bg-info-dark {
+  background-color: #4178CE;
+  color: white;
 }
 .bg-success {
   background-color: #0ECD62;
+  color: white;
 }
 .bg-success-light {
   background-color: #29F382;
+  color: #333;
+}
+.bg-success-dark {
+  background-color: #00A746;
+  color: white;
 }
 .bg-warning {
   background-color: #FBAE13;
+  color: #333;
 }
 .bg-warning-light {
   background-color: #FFD233;
+  color: #333;
+}
+.bg-warning-dark {
+  background-color: #D58C00;
+  color: white;
 }
 .bg-danger {
   background-color: #DB292D;
+  color: white;
 }
-.bg-danger-light {
-  background-color: #FF464A;
+.bg-danger-dark {
+  background-color: #B50C10;
+  color: white;
 }
 /* Lists */
 ul.unstyled,
@@ -265,9 +298,20 @@ h6.ui.headline {
   font-size: 1rem;
   line-height: 1.25;
 }
+.ui.prelude {
+  font-size: 1.16875rem;
+  line-height: 0.965906;
+}
+.ui.prelude + .ui.headline {
+  margin-top: 0;
+}
 @media screen and (min-width: 700px) {
   body {
     line-height: 1.375;
+  }
+  .ui.prelude {
+    font-size: 1.275rem;
+    line-height: 1.0625;
   }
   .ui.headline {
     font-size: 1.5rem;
@@ -297,6 +341,10 @@ h6.ui.headline {
 @media screen and (min-width: 960px) {
   body {
     line-height: 1.375;
+  }
+  .ui.prelude {
+    font-size: 1.275rem;
+    line-height: 1.0625;
   }
   .ui.headline {
     font-size: 1.75rem;
@@ -426,6 +474,11 @@ h6.ui.headline {
 .loader:after {
   border-top-color: rgba(255, 255, 255, 0.5);
   animation: rotate-loader 1s linear infinite;
+}
+.ui.prelude {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'PT Sans', sans-serif;
 }
 /**/
 /* Global variables */
@@ -893,6 +946,13 @@ input[type="radio"] + label:after {
   background-color: transparent;
   line-height: 1;
   cursor: pointer;
+}
+.ui.button.fluid {
+  width: 100%;
+  text-align: center;
+}
+.ui.button.large {
+  font-size: 1.25em;
 }
 .ui.button:not(.outline) {
   background-color: #A0A0A0;
