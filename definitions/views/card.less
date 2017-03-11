@@ -23,8 +23,16 @@
     }
 
     .content, .image {
-        + .content, + .image {
+        + .content {
             border-top: @card-divider-size solid @card-divider-color;
+        }
+    }
+
+    .content[class^="bg-"], .content[class*=" bg-"] {
+        border-top: none !important;
+
+        + .content {
+            border-top: none;
         }
     }
 

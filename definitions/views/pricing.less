@@ -1,0 +1,37 @@
+@element: pricing;
+@type: view;
+
+@import (multiple) "../../theme.less";
+
+.ui.pricing {
+    display: -webkit-flex;
+    display: flex;
+
+    .item {
+        -webkit-flex: 1 1 100%;
+        flex: 1 1 100%;
+        text-align: center;
+        position: relative;
+
+        &.highlighted {
+            z-index: 10;
+            top: -1.25em;
+
+            .ui.card > :first-child {
+                padding-top: 2em;
+            }
+        }
+    }
+
+    .ui.headline {
+        margin: 0.1em 0 0 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .price {
+        font-size: 2.5em;
+        font-weight: 700;
+    }
+}
+
+.load-overrides();

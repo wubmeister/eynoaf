@@ -103,6 +103,7 @@
 
     &.bold { font-weight: @weight-bold; }
 }
+
 .link[href] {
     &.primary:hover { color: @color-primary-dark; }
     &.secondary:hover { color: @color-secondary-dark; }
@@ -111,6 +112,21 @@
     &.warning:hover { color: @color-warning-dark; }
     &.danger:hover { color: @color-danger-dark; }
     &.gray:hover { color: @color-gray-dark; }
+}
+
+.readmore {
+    text-decoration: none;
+
+    &:after {
+        content: ">";
+        display: inline-block;
+        margin-left: 10px;
+        transition: transform 0.2s;
+    }
+
+    &:hover:after {
+        transform: translateX(5px);
+    }
 }
 
 

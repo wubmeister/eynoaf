@@ -28,28 +28,28 @@ if [ ! -d examples/$1s ]; then
 fi
 
 TITLE=`perl -pe 's/^([a-z])/\u$1/' <<< $2`
-echo "<!DOCTYPE html>" > definitions/$1s/$2.html
-echo "<html>" > definitions/$1s/$2.html
-echo "<head>" > definitions/$1s/$2.html
-echo "    <meta charset=\"utf-8\" />" > definitions/$1s/$2.html
-echo "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />" > definitions/$1s/$2.html
-echo "    <title>$TITLE | Elements</title>" > definitions/$1s/$2.html
-echo "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../../all.css\" />" > definitions/$1s/$2.html
-echo "</head>" > definitions/$1s/$2.html
-echo "" > definitions/$1s/$2.html
-echo "<body>" > definitions/$1s/$2.html
-echo "" > definitions/$1s/$2.html
-echo "    <section class=\"ui medium padded section\">" > definitions/$1s/$2.html
-echo "        <div class=\"ui container\">" > definitions/$1s/$2.html
-echo "" > definitions/$1s/$2.html
-echo "            <h2 class=\"ui headline\">$TITLE</h2>" > definitions/$1s/$2.html
-echo "" > definitions/$1s/$2.html
-echo "        </div>" > definitions/$1s/$2.html
-echo "    </section>" > definitions/$1s/$2.html
-echo "" > definitions/$1s/$2.html
-echo "</body>" > definitions/$1s/$2.html
-echo "" > definitions/$1s/$2.html
-echo "</html>" > definitions/$1s/$2.html
+echo "<!DOCTYPE html>" > examples/$1s/$2.html
+echo "<html>" >> examples/$1s/$2.html
+echo "<head>" >> examples/$1s/$2.html
+echo "    <meta charset=\"utf-8\" />" >> examples/$1s/$2.html
+echo "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />" >> examples/$1s/$2.html
+echo "    <title>$TITLE | Elements</title>" >> examples/$1s/$2.html
+echo "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../../all.css\" />" >> examples/$1s/$2.html
+echo "</head>" >> examples/$1s/$2.html
+echo "" >> examples/$1s/$2.html
+echo "<body>" >> examples/$1s/$2.html
+echo "" >> examples/$1s/$2.html
+echo "    <section class=\"ui medium padded section\">" >> examples/$1s/$2.html
+echo "        <div class=\"ui container\">" >> examples/$1s/$2.html
+echo "" >> examples/$1s/$2.html
+echo "            <h2 class=\"ui headline\">$TITLE</h2>" >> examples/$1s/$2.html
+echo "" >> examples/$1s/$2.html
+echo "        </div>" >> examples/$1s/$2.html
+echo "    </section>" >> examples/$1s/$2.html
+echo "" >> examples/$1s/$2.html
+echo "</body>" >> examples/$1s/$2.html
+echo "" >> examples/$1s/$2.html
+echo "</html>" >> examples/$1s/$2.html
 
 # Theme files
 NEWLINE=$'\\\n'

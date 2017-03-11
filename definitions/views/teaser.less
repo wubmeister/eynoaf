@@ -1,0 +1,33 @@
+@element: teaser;
+@type: view;
+
+@import (multiple) "../../theme.less";
+
+.ui.teaser {
+    img {
+        width: 100%;
+
+        + * {
+            margin-top: 16px !important;
+        }
+    }
+
+    .ui.headline {
+        margin-bottom: 0.5em;
+    }
+}
+
+.ui.box {
+    padding: @half-spacing;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
+    border-radius: @border-radius;
+
+    img.stretched {
+        margin: -@half-spacing -@half-spacing 0 -@half-spacing;
+        width: e("calc(100% + @{spacing})");
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+.load-overrides();
