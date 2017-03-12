@@ -225,6 +225,10 @@ a img {
   background-color: #B50C10;
   color: white;
 }
+.bg-black {
+  background-color: #333;
+  color: white;
+}
 /* Lists */
 ul.unstyled,
 ol.unstyled {
@@ -2230,5 +2234,81 @@ ol.ui.menu {
   width: calc(100% + 2rem);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+/**/
+/* Global variables */
+/* Mixins */
+/* Offcanvas variables */
+.ui.offcanvas {
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0, 1);
+}
+.ui.offcanvas.overlay {
+  z-index: 1000;
+}
+.ui.offcanvas.reveal + .pusher,
+.ui.offcanvas.push + .pusher {
+  position: relative;
+  min-height: 100vh;
+  z-index: 10;
+  background-color: white;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0, 1);
+}
+.ui.offcanvas.top {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 240px;
+}
+.ui.offcanvas.top:not(.reveal) {
+  transform: translateY(-100%);
+}
+.ui.offcanvas.right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 240px;
+}
+.ui.offcanvas.right:not(.reveal) {
+  transform: translateX(100%);
+}
+.ui.offcanvas.bottom {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 240px;
+}
+.ui.offcanvas.bottom:not(.reveal) {
+  transform: translateY(100%);
+}
+.ui.offcanvas.left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 240px;
+}
+.ui.offcanvas.left:not(.reveal) {
+  transform: translateX(-100%);
+}
+.ui.offcanvas.visible {
+  transform: none !important;
+}
+.ui.offcanvas.visible.top.reveal + .pusher,
+.ui.offcanvas.visible.top.push + .pusher {
+  transform: translateY(240px);
+}
+.ui.offcanvas.visible.right.reveal + .pusher,
+.ui.offcanvas.visible.right.push + .pusher {
+  transform: translateX(-240px);
+}
+.ui.offcanvas.visible.bottom.reveal + .pusher,
+.ui.offcanvas.visible.bottom.push + .pusher {
+  transform: translateY(-240px);
+}
+.ui.offcanvas.visible.left.reveal + .pusher,
+.ui.offcanvas.visible.left.push + .pusher {
+  transform: translateX(240px);
 }
 /**/
