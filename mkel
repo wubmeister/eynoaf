@@ -34,7 +34,7 @@ echo "<head>" >> examples/$1s/$2.html
 echo "    <meta charset=\"utf-8\" />" >> examples/$1s/$2.html
 echo "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />" >> examples/$1s/$2.html
 echo "    <title>$TITLE | Elements</title>" >> examples/$1s/$2.html
-echo "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../../all.css\" />" >> examples/$1s/$2.html
+echo "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../../eynoaf.css\" />" >> examples/$1s/$2.html
 echo "</head>" >> examples/$1s/$2.html
 echo "" >> examples/$1s/$2.html
 echo "<body>" >> examples/$1s/$2.html
@@ -54,4 +54,4 @@ echo "</html>" >> examples/$1s/$2.html
 # Theme files
 NEWLINE=$'\\\n'
 sed -i '' -e "s/\/\*\*\//@$2: \"default\";$NEWLINE\/\*\*\//g" theme.less
-sed -i '' -e "s/\/\*\*\//\& { @import \"definitions\/$1s\/$2.less\"; }$NEWLINE\/\*\*\//g" all.less
+sed -i '' -e "s/\/\*\*\//\& { @import \"definitions\/$1s\/$2.less\"; }$NEWLINE\/\*\*\//g" eynoaf.less

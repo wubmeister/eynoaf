@@ -1,0 +1,44 @@
+@element: hamburger;
+@type: element;
+
+@import (multiple) "../../theme.less";
+
+.ui.hamburger {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.5em;
+    width: 1em;
+    height: 1em;
+    transition: transform 0.3s;
+
+    .bar {
+        display: block;
+        height: @hamburger-bar-height;
+        background-color: currentColor;
+        margin-top: (@hamburger-bar-spacing - 0.04167em);
+        transition: transform 0.3s, opacity 0.3s;
+        border-radius: 1px;
+
+        + .bar {
+            margin-top: @hamburger-bar-spacing;
+        }
+    }
+
+    &.cross {
+        transform: rotate(180deg);
+
+        .bar:first-child {
+            transform: translateY(@hamburger-bar-height + @hamburger-bar-spacing) rotate(45deg);
+        }
+
+        .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .bar:last-child {
+            transform: translateY(-(@hamburger-bar-height + @hamburger-bar-spacing)) rotate(-45deg);
+        }
+    }
+}
+
+.load-overrides();

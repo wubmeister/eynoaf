@@ -57,7 +57,26 @@
 
 /* Visibility classes */
 
-// TODO
+@media screen and (max-width: @medium-breakpoint) {
+    .medium-only, .from-medium-up {
+        display: none;
+    }
+}
+@media screen and (min-width: @medium-breakpoint) {
+    .small-only {
+        display: none;
+    }
+}
+@media screen and (max-width: @large-breakpoint) {
+    .large-only {
+        display: none;
+    }
+}
+@media screen and (min-width: @large-breakpoint) {
+    .medium-only, .up-to-medium {
+        display: none;
+    }
+}
 
 
 /* Float classes */
@@ -196,9 +215,25 @@
     background-color: @color-danger;
     .choose-fg(@color-danger, white, @text-color);
 }
+.bg-danger-light {
+    background-color: @color-danger-light;
+    .choose-fg(@color-danger-light, white, @text-color);
+}
 .bg-danger-dark {
     background-color: @color-danger-dark;
     .choose-fg(@color-danger-dark, white, @text-color);
+}
+.bg-gray {
+    background-color: @color-gray;
+    .choose-fg(@color-gray, white, @text-color);
+}
+.bg-gray-light {
+    background-color: @color-gray-light;
+    .choose-fg(@color-gray-light, white, @text-color);
+}
+.bg-gray-dark {
+    background-color: @color-gray-dark;
+    .choose-fg(@color-gray-dark, white, @text-color);
 }
 .bg-black {
     background-color: @text-color;
