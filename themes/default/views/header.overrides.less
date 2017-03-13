@@ -1,0 +1,33 @@
+.ui.small.header {
+	height: 160px;
+}
+.ui.medium.header {
+	height: 240px;
+}
+.ui.large.header {
+	height: 320px;
+}
+
+@media screen and (min-width: @medium-breakpoint) {
+	.ui.small.header {
+		height: 240px;
+	}
+	.ui.medium.header {
+		height: 320px;
+	}
+	.ui.large.header {
+		height: 480px;
+	}
+}
+
+@media screen and (min-width: @large-breakpoint) {
+	.ui.small.header {
+		height: 320px;
+	}
+	.ui.medium.header {
+		height: 480px;
+	}
+	.ui.large.header {
+		height: 640px;
+	}
+}

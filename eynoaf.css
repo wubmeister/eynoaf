@@ -2538,3 +2538,84 @@ ol.ui.menu {
   }
 }
 /**/
+/* Global variables */
+/* Mixins */
+.ui.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ui.header .cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+}
+.ui.header .ui.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+.ui.header .ui.container.caption.left {
+  justify-content: flex-start;
+  text-align: left;
+}
+.ui.header .ui.container.caption.right {
+  justify-content: flex-end;
+  text-align: right;
+}
+.ui.header .ui.container.caption.top {
+  align-items: flex-start;
+}
+.ui.header .ui.container.caption.bottom {
+  align-items: flex-end;
+}
+.ui.header .caption:not(.ui.container) {
+  max-width: 80%;
+}
+.ui.header .caption:not(.ui.container) .ui.headline {
+  margin-bottom: 0.25em;
+}
+.ui.header.fullscreen {
+  height: 100vh;
+}
+.ui.small.header {
+  height: 160px;
+}
+.ui.medium.header {
+  height: 240px;
+}
+.ui.large.header {
+  height: 320px;
+}
+@media screen and (min-width: 700px) {
+  .ui.small.header {
+    height: 240px;
+  }
+  .ui.medium.header {
+    height: 320px;
+  }
+  .ui.large.header {
+    height: 480px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .ui.small.header {
+    height: 320px;
+  }
+  .ui.medium.header {
+    height: 480px;
+  }
+  .ui.large.header {
+    height: 640px;
+  }
+}
+/**/
