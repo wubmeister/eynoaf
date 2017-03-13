@@ -1,0 +1,179 @@
+@element: shoppingcart;
+@type: view;
+
+@import (multiple) "../../theme.less";
+
+.ui.shoppingcart {
+    .header {
+        display: none;
+        justify-content: flex-end;
+
+        .quantity {
+            width: 18.75%;
+            text-align: center;
+        }
+        .unitprice, .totalprice {
+            width: 12.5%;
+            text-align: right;
+        }
+        .quantity, .unitprice, .totalprice {
+            padding: 0 1rem;
+            font-weight: 700;
+        }
+    }
+
+    .item {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -@half-spacing;
+        padding: @half-spacing 0;
+        border-bottom: @shoppingcart-divider-size solid @shoppingcart-divider-color;
+
+        > * {
+            padding: 0 @half-spacing;
+        }
+
+
+        .image {
+            order: 3;
+            width: 50%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        > .title {
+            order: 1;
+            width: 80%;
+            padding-bottom: 0.5em;
+        }
+
+        .title {
+            font-weight: 700;
+
+            .title + p {
+                margin-top: 0;
+            }
+        }
+
+        .content {
+            order: 6;
+            width: 100%;
+            padding-top: 0.5em;
+
+            .title {
+                display: none;
+            }
+        }
+
+        .remove {
+            order: 2;
+            width: 20%;
+            text-align: right;
+        }
+
+        .quantity {
+            order: 4;
+            width: 20%;
+            text-align: center;
+        }
+
+        .prices {
+            order: 5;
+            width: 30%;
+        }
+
+        .unitprice {
+            padding-right: @half-spacing;
+        }
+
+        .unitprice, .totalprice {
+            text-align: right;
+        }
+
+        .totalprice {
+            font-weight: 700;
+        }
+    }
+
+    .item:first-child, .header + .item {
+        border-top: @shoppingcart-divider-size solid @shoppingcart-divider-color;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: @half-spacing;
+        margin: 0 -@half-spacing;
+
+        .quantity {
+            width: 18.75%;
+        }
+
+        .unitprice, .totalprice {
+            width: 12.5%;
+        }
+
+        .label, .totalprice {
+            font-weight: 700;
+        }
+
+        .unitprice, .totalprice, .label, .quantity {
+            padding: 0 @half-spacing;
+            text-align: right;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -@half-spacing;
+            padding-bottom: @half-spacing;
+        }
+
+        .item {
+            .image, > .title, .content, .remove, .quantity, .prices {
+                order: unset;
+            }
+
+            .image {
+                width: 20%;
+            }
+
+            > .title {
+                display: none;
+            }
+
+
+            .content {
+                width: 30%;
+                padding-top: 0;
+
+                .title {
+                    display: block;
+                }
+            }
+
+            .remove {
+                width: 6.25%;
+            }
+
+            .quantity {
+                width: 18.75%;
+            }
+
+            .prices {
+                display: flex;
+                width: 25%;
+            }
+
+            .unitprice, .totalprice {
+                width: 50%;
+            }
+        }
+    }
+}
+
+.load-overrides();
