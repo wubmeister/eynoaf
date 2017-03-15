@@ -1506,6 +1506,12 @@ ol.ui.menu {
   color: #136DFB;
   box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.06);
 }
+.ui.topbar .brand {
+  display: inline-block;
+}
+.ui.topbar .brand img {
+  display: block;
+}
 .ui.topbar .left,
 .ui.topbar .right {
   flex-basis: 50%;
