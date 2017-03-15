@@ -298,6 +298,14 @@ img.bordered {
   background-color: #FFF;
   border: 1px solid #ebebeb;
 }
+/* HR */
+hr.subtle {
+  width: 3.125rem;
+  height: 2px;
+  border: none;
+  margin: 0.85em auto;
+  text-align: center;
+}
 /* Typography */
 body {
   line-height: 1.25;
@@ -351,6 +359,9 @@ h5.ui.headline {
 h6.ui.headline {
   font-size: 1rem;
   line-height: 1.25;
+}
+.ui.introduction.headline {
+  font-weight: normal;
 }
 .ui.prelude {
   font-size: 1.16875rem;
@@ -2607,7 +2618,11 @@ ol.ui.menu {
   max-width: 80%;
 }
 .ui.header .caption:not(.ui.container) .ui.headline {
-  margin-bottom: 0.25em;
+  margin-bottom: 1rem;
+}
+.ui.header .caption:not(.ui.container) .ui.headline + p {
+  margin-top: 0;
+  font-size: 2rem;
 }
 .ui.header.fullscreen {
   height: 100vh;

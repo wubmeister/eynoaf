@@ -13,6 +13,19 @@
     .ui.header .caption .ui.button {
         text-shadow: none;
     }
+    .link-list li {
+        padding: 0.25em 0;
+    }
+    .link-list li:first-child {
+        padding-top: 0;
+    }
+    .link-list a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+    }
+    .link-list a:hover {
+        color: rgba(255, 255, 255, 0.8);
+    }
     </style>
 </head>
 
@@ -46,16 +59,42 @@
                 <div class="ui prelude">Welcome</div>
                 <h1 class="ui headline">This is our company</h1>
                 <p class="lead">Feel free to join us!</p>
-                <a href="/" class="ui primary button">Read more</a>
+                <a href="/" class="ui large primary button">Read more</a>
             </div>
         </div>
     </header>
 
     <section class="ui section">
         <div class="ui center aligned container">
-            <div class="ui prelude">Welcome</div>
-            <h2 class="ui headline">This is our company</h2>
+            <h2 class="ui large introduction headline">We create <strong>high quality products</strong> that are used and loved by thousands of customers</h2>
             <p class="lead">Feel free to join us!</p>
+        </div>
+    </section>
+
+    <hr class="subtle bg-black" />
+
+    <section class="ui section">
+        <div class="ui container">
+            <div class="ui three column grid">
+                <div class="column">
+                    <h4 class="ui headline">This is a teaser</h4>
+                    <p class="gray text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a class="readmore" href="/">Read more</a>
+                </div>
+                <div class="column">
+                    <h4 class="ui headline">This is a teaser</h4>
+                    <p class="gray text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a class="readmore" href="/">Read more</a>
+                </div>
+                <div class="column">
+                    <h4 class="ui headline">This is a teaser</h4>
+                    <p class="gray text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a class="readmore" href="/">Read more</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -97,6 +136,64 @@
             </div>
         </div>
     </section>
+
+    <footer class="ui medium padded section bg-black">
+        <div class="ui container">
+            <div class="ui medium-four column grid">
+                <div class="column">
+                    <div class="ui small headline">Contact</div>
+
+                    <p>
+                        Saskiastraat 12<br/>
+                        8921 EB Leeuwarden
+                    </p>
+                    <p>
+                        <strong>T</strong> 06-17970888<br/>
+                        <strong>E</strong> <a href="mailto:wubbo@wubbobos.nl">wubbo@wubbobos.nl</a>
+                    </p>
+                </div>
+
+                <div class="column">
+                    <div class="ui small headline">Lorem ipsum</div>
+
+                    <ul class="unstyled link-list">
+                        <li><a href="/">Doler sit amet</a></li>
+                        <li><a href="/">Doler sit amet</a></li>
+                        <li><a href="/">Doler sit amet</a></li>
+                        <li><a href="/">Doler sit amet</a></li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <div class="ui small headline">Lorem ipsum</div>
+
+                    <ul class="unstyled link-list">
+                        <li><a href="/">Doler sit amet</a></li>
+                        <li><a href="/">Doler sit amet</a></li>
+                        <li><a href="/">Doler sit amet</a></li>
+                        <li><a href="/">Doler sit amet</a></li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <div class="ui small headline">Lorem ipsum</div>
+
+                    <ul class="unstyled link-list">
+                        <li><a href="/">Doler sit amet</a></li>
+                        <li><a href="/">Doler sit amet</a></li>
+                        <li><a href="/">Doler sit amet</a></li>
+                        <li><a href="/">Doler sit amet</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script type="text/javascript" src="../../../js/ui.js"></script>
+<script type="text/javascript" src="../../../js/scrollable-topbar.js"></script>
+<script type="text/javascript">
+    ScrollableTopbar(document.querySelector('.topbar'));
+</script>
 
 </body>
 
