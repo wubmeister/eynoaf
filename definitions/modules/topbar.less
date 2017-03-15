@@ -51,6 +51,28 @@
         color: @topbar-scrolled-color;
         box-shadow: @topbar-scrolled-box-shadow;
     }
+
+    .brand {
+        display: inline-block;
+
+        img {
+            display: block;
+        }
+    }
+
+    .left, .right {
+        flex-basis: 50%;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .center {
+        flex-shrink: 0;
+        flex-grow: 0;
+        text-align: center;
+    }
 }
 
 .load-overrides();

@@ -52,7 +52,7 @@
         background: @menubar-item-active-background;
 
         &, > a {
-            color: @menubar-item-active-color;
+            color: @menubar-item-active-color !important;
         }
     }
 
@@ -71,6 +71,7 @@
                 height: @menubar-item-line-height;
                 margin: 0 auto;
                 background-color: @menubar-item-line-color;
+                transition: background-color 0.2s, width 0.2s;
             }
 
             &:hover:after {

@@ -1243,7 +1243,7 @@ button.close.button {
 }
 .ui.menubar > .item.active,
 .ui.menubar > .item.active > a {
-  color: #136DFB;
+  color: #136DFB !important;
 }
 .ui.menubar.line > .item,
 .ui.menubar.line > .item > a {
@@ -1260,6 +1260,7 @@ button.close.button {
   height: 2px;
   margin: 0 auto;
   background-color: transparent;
+  transition: background-color 0.2s, width 0.2s;
 }
 .ui.menubar.line > .item:hover:after {
   background-color: rgba(0, 0, 0, 0.05);
@@ -1504,6 +1505,24 @@ ol.ui.menu {
   background: white;
   color: #136DFB;
   box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.06);
+}
+.ui.topbar .brand {
+  display: inline-block;
+}
+.ui.topbar .brand img {
+  display: block;
+}
+.ui.topbar .left,
+.ui.topbar .right {
+  flex-basis: 50%;
+}
+.ui.topbar .right {
+  text-align: right;
+}
+.ui.topbar .center {
+  flex-shrink: 0;
+  flex-grow: 0;
+  text-align: center;
 }
 /**/
 /* Global variables */
