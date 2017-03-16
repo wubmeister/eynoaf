@@ -461,6 +461,9 @@ h6.ui.headline {
   border-bottom: 0.3125em solid transparent;
   border-left: 0.3125em solid currentColor;
 }
+.left.caret {
+  transform: rotate(-180deg);
+}
 .ui.dropdown .caret,
 .ui.menubar > .dropdown.item .caret {
   transform: rotate(90deg);
@@ -2657,5 +2660,64 @@ ol.ui.menu {
   .ui.large.header {
     height: 640px;
   }
+}
+/**/
+/* Global variables */
+/* Mixins */
+/* Drilldown vasriables */
+.ui.drilldown {
+  overflow: hidden;
+}
+.ui.drilldown > .header {
+  line-height: 1;
+  padding: 0.75em 1em;
+  text-align: center;
+  position: relative;
+}
+.ui.drilldown > .header .left.caret {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1em;
+  cursor: pointer;
+  margin: auto 0;
+  transition: opacity 0.2s;
+}
+.ui.drilldown .item {
+  position: static;
+}
+.ui.drilldown .item > a {
+  position: relative;
+}
+.ui.drilldown .item .caret {
+  position: absolute;
+  top: 0;
+  right: 1em;
+  bottom: 0;
+  margin: auto 0;
+}
+.ui.drilldown .ui.menu {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0, 1);
+}
+.ui.drilldown .ui.menu.inactive {
+  transform: translateX(-100%);
+}
+.ui.drilldown .item .ui.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.ui.drilldown .item .ui.menu.active,
+.ui.drilldown .item .ui.menu.inactive {
+  opacity: 1;
+  pointer-events: auto;
+}
+.ui.drilldown .item .ui.menu.inactive {
+  transform: none;
 }
 /**/

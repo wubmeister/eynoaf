@@ -59,6 +59,36 @@
     &.divided > .item + .item {
         border-top: @menu-divider-size solid @menu-divider-color;
     }
+
+    &.inverted {
+        > .item {
+            background: @menu-inverted-item-background;
+
+            &, > a {
+                color: @menu-inverted-item-color;
+            }
+
+            &:hover {
+                background: @menu-inverted-item-hover-background;
+
+                &, > a {
+                    color: @menu-inverted-item-hover-color;
+                }
+            }
+
+            &.active {
+                background: @menu-inverted-item-active-background;
+
+                &, > a {
+                    color: @menu-inverted-item-active-color;
+                }
+            }
+        }
+
+        > .divider {
+            background-color: @menu-inverted-divider-color;
+        }
+    }
 }
 ul.ui.menu, ol.ui.menu {
     list-style: none;

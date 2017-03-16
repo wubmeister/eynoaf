@@ -130,10 +130,11 @@ for (i = 2; i < process.argv.length; i++) {
     less += '@color-' + name + '-background: #' + rgbToHex(hsvToRgb(lighterHsv)) + ';' + "\n";
 }
 
-fs.writeFile('colors.less', less, 'utf8', function (err) {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log('Written to colors.less');
-    }
-});
+// fs.writeFile('colors.less', less, 'utf8', function (err) {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log('Written to colors.less');
+//     }
+// });
+console.log(less);
