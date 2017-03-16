@@ -8,13 +8,13 @@
 
     > .header {
         line-height: 1;
-        padding: 0.75em 1em;
+        padding: @drilldown-header-v-padding @drilldown-header-h-padding;
         text-align: center;
         position: relative;
 
         .left.caret {
             position: absolute;
-            top: 0; bottom: 0; left: 1em;
+            top: 0; bottom: 0; left: @drilldown-header-h-padding;
             cursor: pointer;
             margin: auto 0;
             transition: opacity 0.2s;
@@ -30,7 +30,7 @@
 
         .caret {
             position: absolute;
-            top: 0; right: 1em; bottom: 0;
+            top: 0; right: @drilldown-header-h-padding; bottom: 0;
             margin: auto 0;
         }
     }
