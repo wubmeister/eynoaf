@@ -574,4 +574,24 @@ h6.ui.headline {
     }
 }
 
+
+/* Divider */
+
+.ui.divider {
+    margin: 2rem 0;
+    height: @divider-size;
+    background-color: @divider-color;
+    text-align: center;
+
+    .title {
+        display: inline-block;
+        padding: 0 @half-spacing;
+        background-color: white;
+        line-height: 1;
+        position: relative;
+        top: -0.6em;
+        font-weight: @weight-bold;
+    }
+}
+
 .load-overrides();
