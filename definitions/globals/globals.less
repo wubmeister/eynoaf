@@ -149,6 +149,35 @@
 }
 
 
+/* Blockquote */
+
+.ui.blockquote {
+    font-size: 1.35em;
+    position: relative;
+    margin: 2rem 3.5rem 2rem 3.5rem;
+
+    .author {
+        font-size: 1rem;
+        opacity: 0.65;
+
+        &:before {
+            content: "\2014";
+            display: inline-block;
+            margin-right: 5px;
+        }
+    }
+
+    &:before {
+        content: "\201D";
+        position: absolute;
+        font: bold 4em "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        opacity: 0.25;
+        top: -1.25rem;
+        left: -3.5rem;
+    }
+}
+
+
 /* Background classes */
 
 .bg-primary {
@@ -234,6 +263,9 @@
 .bg-gray-dark {
     background-color: @color-gray-dark !important;
     .choose-fg(@color-gray-dark, white, @text-color);
+}
+.bg-white {
+    background-color: white !important;
 }
 .bg-black {
     background-color: @text-color !important;
