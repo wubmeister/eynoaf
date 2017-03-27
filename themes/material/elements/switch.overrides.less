@@ -1,0 +1,12 @@
+.ui.switch {
+	label:before {
+		opacity: 0.5;
+	}
+
+	&.primary :checked + label:after { background-color: @color-primary; }
+	&.secondary :checked + label:after { background-color: @color-secondary; }
+	&.info :checked + label:after { background-color: @color-info; }
+	&.success :checked + label:after { background-color: @color-success; }
+	&.warning :checked + label:after { background-color: @color-warning; }
+	&.danger :checked + label:after { background-color: @color-danger; }
+}
