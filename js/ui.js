@@ -38,7 +38,7 @@ var UI = {
 		style = getComputedStyle(element);
 		durations = style.transitionDuration.split(/\s*,\s*/).map(function (d) { return parseFloat(d) * 1000; });
 		delays = style.transitionDuration.split(/\s*,\s*/).map(function (d) { return parseFloat(d) * 1000; });
-console.log(durations, delays);
+
 		max = 0;
 		for (i = 0; i < durations.length; i++) {
 			if (durations[i] + delays[i] > max) {
@@ -47,6 +47,52 @@ console.log(durations, delays);
 		}
 
 		return max;
+	},
+	ajax: function (options) {
+		var xhr, data;
+
+		if ('url' in options) {
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function () {
+				var response;
+
+				if (this.readyState == 4) {
+					if (this.status == 200) {
+						if (this.responseText && (this.responseText[0] == '{' || this.responseText[0] == '[')) {
+							response = JSON.parse(this.responseText);
+						} else {
+							response = this.responseText;
+						}
+
+						if ('success' in options) {
+							options.success(response);
+						}
+					} else {
+						if ('error' in options) {
+							options.error(this, this.statusText, this.status);
+						}
+					}
+
+					if ('complete' in options) {
+						options.complete(this, this.statusText, this.status);
+					}
+				}
+			};
+
+			xhr.open(('method' in options) ? options.method.toUpperCase() : (('data' in options) ? 'POST' : 'GET'), options.url, true);
+			if ('data' in options) {
+				if (typeof options.data == 'object') {
+					xhr.setRequestHeader('Content-Type: application/json');
+					data = JSON.stringify(options.data);
+				} else {
+					xhr.setRequestHeader('Content-Type: application/x-www-form-urlencoded');
+					data = options.data;
+				}
+				xhr.send(data);
+			} else {
+				xhr.send();
+			}
+		}
 	}
 }
 
