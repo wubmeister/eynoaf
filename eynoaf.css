@@ -115,56 +115,65 @@ a img {
 /* Text classes */
 .text.primary,
 .link.primary {
-  color: #136DFB;
+  color: #136DFB !important;
 }
 .text.secondary,
 .link.secondary {
-  color: #42E78A;
+  color: #42E78A !important;
 }
 .text.info,
 .link.info {
-  color: #669DF4;
+  color: #669DF4 !important;
 }
 .text.success,
 .link.success {
-  color: #0ECD62;
+  color: #0ECD62 !important;
 }
 .text.warning,
 .link.warning {
-  color: #FBAE13;
+  color: #FBAE13 !important;
 }
 .text.danger,
 .link.danger {
-  color: #DB292D;
+  color: #DB292D !important;
 }
 .text.gray,
 .link.gray {
-  color: #A0A0A0;
+  color: #A0A0A0 !important;
 }
 .text.bold,
 .link.bold {
-  font-weight: 700;
+  font-weight: 700 !important;
+}
+.text.white {
+  color: white !important;
+}
+.link.white {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 .link[href].primary:hover {
-  color: #004FD5;
+  color: #004FD5 !important;
 }
 .link[href].secondary:hover {
-  color: #24C168;
+  color: #24C168 !important;
 }
 .link[href].info:hover {
-  color: #4178CE;
+  color: #4178CE !important;
 }
 .link[href].success:hover {
-  color: #00A746;
+  color: #00A746 !important;
 }
 .link[href].warning:hover {
-  color: #D58C00;
+  color: #D58C00 !important;
 }
 .link[href].danger:hover {
-  color: #B50C10;
+  color: #B50C10 !important;
 }
 .link[href].gray:hover {
-  color: #7A6E6E;
+  color: #7A6E6E !important;
+}
+.link[href].white:hover {
+  color: white !important;
 }
 .readmore {
   text-decoration: none;
@@ -602,6 +611,9 @@ h6.ui.headline {
 }
 .ui.grid > .column {
   padding: 0 1rem;
+}
+.ui.grid.gallery > .column {
+  padding: 1rem;
 }
 .ui.grid.one.column > .column,
 .ui.grid.small-one.column > .column {
@@ -1050,7 +1062,7 @@ label {
 /* Buttons */
 .ui.button {
   display: inline-block;
-  margin: 4px;
+  margin: 0;
   padding: 0.65em 1.25em;
   border-radius: 2px;
   font-weight: 700;
@@ -1066,6 +1078,13 @@ label {
 }
 .ui.button.large {
   font-size: 1.25em;
+}
+.ui.button.circle {
+  width: 2.3em;
+  height: 2.3em;
+  padding: 0.65em 0;
+  text-align: center;
+  border-radius: 50%;
 }
 .ui.button:not(.outline) {
   background-color: #A0A0A0;
@@ -2037,7 +2056,7 @@ ol.ui.menu {
 .ui.progress {
   height: 0.85em;
   border-radius: 2px;
-  background: #ebebeb;
+  background: rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
 .ui.progress .bar {
@@ -2047,6 +2066,13 @@ ol.ui.menu {
   text-align: right;
   padding-right: 5px;
   font-weight: 700;
+}
+.ui.progress.bottom.attached {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0.3125em;
 }
 .ui.progress.primary .bar,
 .ui.progress .bar.primary {
@@ -2789,5 +2815,212 @@ ol.ui.menu {
 }
 .ui.drilldown .item .ui.menu.inactive {
   transform: none;
+}
+/**/
+/* Global variables */
+/* Mixins */
+.ui.switch {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ui.switch label {
+  padding-left: 4rem;
+  position: relative;
+}
+.ui.switch label:before,
+.ui.switch label:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ui.switch label:before {
+  width: 3rem;
+  height: 1.625rem;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s, background-color 0.3s;
+  border-radius: 0.8125rem;
+}
+.ui.switch label:after {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  box-shaodw: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s;
+  margin: 0 0;
+}
+.ui.switch :checked + label:before {
+  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.06);
+}
+.ui.switch :checked + label:after {
+  transform: translateX(1.5rem);
+}
+.ui.switch.primary :checked + label:before {
+  background-color: #136DFB;
+}
+.ui.switch.secondary :checked + label:before {
+  background-color: #42E78A;
+}
+.ui.switch.info :checked + label:before {
+  background-color: #669DF4;
+}
+.ui.switch.success :checked + label:before {
+  background-color: #0ECD62;
+}
+.ui.switch.warning :checked + label:before {
+  background-color: #FBAE13;
+}
+.ui.switch.danger :checked + label:before {
+  background-color: #DB292D;
+}
+/**/
+/* Global variables */
+/* Mixins */
+/* Filedrop variables */
+.ui.filedrop {
+  position: relative;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.ui.filedrop input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.ui.filedrop > .inner {
+  position: relative;
+  z-index: 1;
+  min-height: 300px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+.ui.filedrop > .inner .item {
+  width: 50%;
+  padding: 1rem;
+  cursor: default;
+}
+.ui.filedrop > .inner .item .preview {
+  position: relative;
+  overflow: hidden;
+}
+.ui.filedrop > .inner .item .preview:before {
+  content: "";
+  display: block;
+  height: 0;
+  padding-top: 75%;
+}
+.ui.filedrop > .inner .item .preview .inner,
+.ui.filedrop > .inner .item .preview .actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.ui.filedrop > .inner .item .preview .inner img,
+.ui.filedrop > .inner .item .preview .actions img {
+  max-width: 100%;
+}
+.ui.filedrop > .inner .item .preview .ui.progress {
+  border-radius: 0;
+}
+.ui.filedrop > .inner .item .preview .actions {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.ui.filedrop > .inner .item .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1rem;
+  font-size: 0.85em;
+  text-align: center;
+}
+.ui.filedrop > .inner .item:hover .preview .actions {
+  opacity: 1;
+}
+.ui.filedrop > .label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0.25;
+  cursor: default;
+}
+@media screen and (min-width: 700px) {
+  .ui.filedrop .inner .item {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 960px) {
+  .ui.filedrop .inner .item {
+    width: 20%;
+  }
+}
+.fileicon {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  background-size: 12rem 12rem;
+  background-position: 0 0;
+}
+.fileicon.text {
+  background-position: -3rem 0;
+}
+.fileicon.video {
+  background-position: -6rem 0;
+}
+.fileicon.audio {
+  background-position: -9rem 0;
+}
+.fileicon.image {
+  background-position: 0 -3rem;
+}
+.fileicon.archive {
+  background-position: -3rem -3rem;
+}
+.fileicon.psd {
+  background-position: -6rem -3rem;
+}
+.fileicon.executable {
+  background-position: -9rem -3rem;
+}
+.fileicon.certificate {
+  background-position: 0 -6rem;
+}
+.fileicon.word {
+  background-position: -3rem -6rem;
+}
+.fileicon.powerpoint {
+  background-position: -6rem -6rem;
+}
+.fileicon.flash {
+  background-position: -9rem -6rem;
+}
+.fileicon.excel {
+  background-position: 0 -9rem;
+}
+.fileicon.htmlxml {
+  background-position: -3rem -9rem;
+}
+.fileicon.pdf {
+  background-position: -6rem -9rem;
 }
 /**/

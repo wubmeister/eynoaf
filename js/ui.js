@@ -114,7 +114,7 @@ function forEach(collection, callback) {
 
 	if (collection instanceof Array) {
 		collection.forEach(callback);
-	} else if (collection instanceof NodeList) {
+	} else if (collection instanceof NodeList || collection instanceof FileList) {
 		for (index = 0; index < collection.length; index++) {
 			if (callback(collection[index], index, collection) === false) {
 				break;

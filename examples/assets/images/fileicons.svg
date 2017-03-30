@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg version="1.1" width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+	<!-- Other -->
+	<path d="M5 2l16 0l6 6l0 22l-22 0Z" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- Text -->
+	<path d="M37 2l16 0l6 6l0 22l-22 0Z m5 11l12 0 m-12 4l10 0 m-10 4l12 0" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- Video -->
+	<path d="M69 2l16 0l6 6l0 22l-22 0Z" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+	<path d="M75 11l10 5l-10 5Z"  fill="#444" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- Audio -->
+	<path d="M101 2l16 0l6 6l0 22l-22 0Z" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+	<path d="M108 14l3 0l4-4l0 12l-4-4l-3 0Z"  fill="#444" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- Image -->
+	<path d="M5 34l16 0l6 6l0 22l-22 0Z m5 18l4-4l3 3m-2 2l4 -4l4 4" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+	<circle cx="18" cy="45" r="2" fill="none" stroke-width="2" stroke="#444" />
+
+	<!-- Archive -->
+	<path d="M37 34l16 0l6 6l0 22l-22 0Z m5 4l3 0 m-3 4l3 0 m-3 4l3 0 m-3 4l3 0 m-3 4l3 0 m-3 4l3 0 m0 2l3 0 m-3-4l3 0 m-3-4l3 0 m-3-4l3 0 m-3-4l3 0" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- PSD -->
+	<path d="M69 34l16 0l6 6l0 22l-22 0Z m5 18l4-4l3 3m-2 2l4 -4l4 4" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+	<circle cx="82" cy="45" r="2" fill="none" stroke-width="2" stroke="#444" />
+
+	<!-- Executable -->
+	<path d="M101 34l16 0l6 6l0 22l-22 0Z" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- Certificate -->
+	<path d="M5 66l16 0l6 6l0 22l-22 0Z" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- Word -->
+	<path d="M37 66l16 0l6 6l0 22l-22 0Z m6 10l2.5 10l2.5-9l2.5 9l2.5-10" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- Powerpoint -->
+	<path d="M69 66l16 0l6 6l0 22l-22 0Z m5 7l12 0m-12 12l12 0m-8 2l4 0" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+	<path d="M80 76.5l0 3l3 0a3 3 0 1 1 -3 -3Z" fill="#444" />
+	<path d="M81.5 75a3 3 0 0 1 3 3l-3 0Z" fill="#444" stroke="none" />
+
+	<!-- Flash -->
+	<path d="M101 66l16 0l6 6l0 22l-22 0Z" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- Excel -->
+	<path d="M5 98l16 0l6 6l0 22l-22 0Z m7.5 10l6 10m-6 0l6-10" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- HTML/XML -->
+	<path d="M37 98l16 0l6 6l0 22l-22 0Z m9 10l-5 5l3 3m2 2l5-10m1.5 2l3 3l-5 5" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+
+	<!-- PDF -->
+	<path d="M69 98l16 0l6 6l0 22l-22 0Z" fill="none" stroke-width="2" stroke-linejoin="round" stroke="#444" />
+</svg>
