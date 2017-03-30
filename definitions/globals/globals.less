@@ -112,25 +112,29 @@
 /* Text classes */
 
 .text, .link {
-    &.primary { color: @color-primary; }
-    &.secondary { color: @color-secondary; }
-    &.info { color: @color-info; }
-    &.success { color: @color-success; }
-    &.warning { color: @color-warning; }
-    &.danger { color: @color-danger; }
-    &.gray { color: @color-gray; }
+    &.primary { color: @color-primary !important; }
+    &.secondary { color: @color-secondary !important; }
+    &.info { color: @color-info !important; }
+    &.success { color: @color-success !important; }
+    &.warning { color: @color-warning !important; }
+    &.danger { color: @color-danger !important; }
+    &.gray { color: @color-gray !important; }
 
-    &.bold { font-weight: @weight-bold; }
+    &.bold { font-weight: @weight-bold !important; }
+
 }
+.text.white { color: white !important; }
+.link.white { color: rgba(255, 255, 255, 0.8) !important; }
 
 .link[href] {
-    &.primary:hover { color: @color-primary-dark; }
-    &.secondary:hover { color: @color-secondary-dark; }
-    &.info:hover { color: @color-info-dark; }
-    &.success:hover { color: @color-success-dark; }
-    &.warning:hover { color: @color-warning-dark; }
-    &.danger:hover { color: @color-danger-dark; }
-    &.gray:hover { color: @color-gray-dark; }
+    &.primary:hover { color: @color-primary-dark !important; }
+    &.secondary:hover { color: @color-secondary-dark !important; }
+    &.info:hover { color: @color-info-dark !important; }
+    &.success:hover { color: @color-success-dark !important; }
+    &.warning:hover { color: @color-warning-dark !important; }
+    &.danger:hover { color: @color-danger-dark !important; }
+    &.gray:hover { color: @color-gray-dark !important; }
+    &.white:hover { color: white !important; }
 }
 
 .readmore {
@@ -149,94 +153,126 @@
 }
 
 
+/* Blockquote */
+
+.ui.blockquote {
+    font-size: 1.35em;
+    position: relative;
+    margin: 2rem 3.5rem 2rem 3.5rem;
+
+    .author {
+        font-size: 1rem;
+        opacity: 0.65;
+
+        &:before {
+            content: "\2014";
+            display: inline-block;
+            margin-right: 5px;
+        }
+    }
+
+    &:before {
+        content: "\201D";
+        position: absolute;
+        font: bold 4em "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        opacity: 0.25;
+        top: -1.25rem;
+        left: -3.5rem;
+    }
+}
+
+
 /* Background classes */
 
 .bg-primary {
-    background-color: @color-primary;
+    background-color: @color-primary !important;
     .choose-fg(@color-primary, white, @text-color);
 }
 .bg-primary-light {
-    background-color: @color-primary-light;
+    background-color: @color-primary-light !important;
     .choose-fg(@color-primary-light, white, @text-color);
 }
 .bg-primary-dark {
-    background-color: @color-primary-dark;
+    background-color: @color-primary-dark !important;
     .choose-fg(@color-primary-dark, white, @text-color);
 }
 .bg-secondary {
-    background-color: @color-secondary;
+    background-color: @color-secondary !important;
     .choose-fg(@color-secondary, white, @text-color);
 }
 .bg-secondary-light {
-    background-color: @color-secondary-light;
+    background-color: @color-secondary-light !important;
     .choose-fg(@color-secondary-light, white, @text-color);
 }
 .bg-secondary-dark {
-    background-color: @color-secondary-dark;
+    background-color: @color-secondary-dark !important;
     .choose-fg(@color-secondary-dark, white, @text-color);
 }
 .bg-info {
-    background-color: @color-info;
+    background-color: @color-info !important;
     .choose-fg(@color-info, white, @text-color);
 }
 .bg-info-light {
-    background-color: @color-info-light;
+    background-color: @color-info-light !important;
     .choose-fg(@color-info-light, white, @text-color);
 }
 .bg-info-dark {
-    background-color: @color-info-dark;
+    background-color: @color-info-dark !important;
     .choose-fg(@color-info-dark, white, @text-color);
 }
 .bg-success {
-    background-color: @color-success;
+    background-color: @color-success !important;
     .choose-fg(@color-success, white, @text-color);
 }
 .bg-success-light {
-    background-color: @color-success-light;
+    background-color: @color-success-light !important;
     .choose-fg(@color-success-light, white, @text-color);
 }
 .bg-success-dark {
-    background-color: @color-success-dark;
+    background-color: @color-success-dark !important;
     .choose-fg(@color-success-dark, white, @text-color);
 }
 .bg-warning {
-    background-color: @color-warning;
+    background-color: @color-warning !important;
     .choose-fg(@color-warning, white, @text-color);
 }
 .bg-warning-light {
-    background-color: @color-warning-light;
+    background-color: @color-warning-light !important;
     .choose-fg(@color-warning-light, white, @text-color);
 }
 .bg-warning-dark {
-    background-color: @color-warning-dark;
+    background-color: @color-warning-dark !important;
     .choose-fg(@color-warning-dark, white, @text-color);
 }
 .bg-danger {
-    background-color: @color-danger;
+    background-color: @color-danger !important;
     .choose-fg(@color-danger, white, @text-color);
 }
 .bg-danger-light {
-    background-color: @color-danger-light;
+    background-color: @color-danger-light !important;
     .choose-fg(@color-danger-light, white, @text-color);
 }
 .bg-danger-dark {
-    background-color: @color-danger-dark;
+    background-color: @color-danger-dark !important;
     .choose-fg(@color-danger-dark, white, @text-color);
 }
 .bg-gray {
-    background-color: @color-gray;
+    background-color: @color-gray !important;
     .choose-fg(@color-gray, white, @text-color);
 }
 .bg-gray-light {
-    background-color: @color-gray-light;
+    background-color: @color-gray-light !important;
     .choose-fg(@color-gray-light, white, @text-color);
 }
 .bg-gray-dark {
-    background-color: @color-gray-dark;
+    background-color: @color-gray-dark !important;
     .choose-fg(@color-gray-dark, white, @text-color);
 }
+.bg-white {
+    background-color: white !important;
+}
 .bg-black {
-    background-color: @text-color;
+    background-color: @text-color !important;
     color: white;
 }
 
@@ -461,6 +497,10 @@ h6.ui.headline {
     }
 }
 
+.left.caret {
+    transform: rotate(-180deg);
+}
+
 .ui.dropdown .caret, .ui.menubar > .dropdown.item .caret {
     transform: rotate(90deg);
 }
@@ -535,6 +575,26 @@ h6.ui.headline {
     &:after {
         border-top-color: @loader-spinner-color;
         animation: rotate-loader 1s linear infinite;
+    }
+}
+
+
+/* Divider */
+
+.ui.divider {
+    margin: 2rem 0;
+    height: @divider-size;
+    background-color: @divider-color;
+    text-align: center;
+
+    .title {
+        display: inline-block;
+        padding: 0 @half-spacing;
+        background-color: white;
+        line-height: 1;
+        position: relative;
+        top: -0.6em;
+        font-weight: @weight-bold;
     }
 }
 

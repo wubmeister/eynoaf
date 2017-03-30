@@ -7,7 +7,7 @@
 
 .ui.button {
     display: inline-block;
-    margin: @button-margin;
+    margin: 0; // @button-margin;
     padding: @button-v-padding @button-h-padding;
     border-radius: @button-border-radius;
     font-weight: @button-font-weight;
@@ -24,6 +24,14 @@
 
     &.large {
         font-size: 1.25em;
+    }
+
+    &.circle {
+        width: (2 * @button-v-padding + 1rem);
+        height: (2 * @button-v-padding + 1rem);
+        padding: @button-v-padding 0;
+        text-align: center;
+        border-radius: 50%;
     }
 
     &:not(.outline) {

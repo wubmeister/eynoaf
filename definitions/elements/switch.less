@@ -1,0 +1,56 @@
+@element: switch;
+@type: element;
+
+@import (multiple) "../../theme.less";
+
+.ui.switch {
+	display: inline-block;
+	vertical-align: middle;
+
+	label {
+		padding-left: @switch-width + @half-spacing;
+		position: relative;
+
+		&:before, &:after {
+			position: absolute;
+			top: 0; left: 0;
+
+		}
+
+		&:before {
+			width: @switch-width;
+			height: @switch-socket-height;
+			box-shadow: inset 0 0 0 @switch-socket-border-size @switch-socket-border-color;
+			transition: box-shadow 0.3s, background-color 0.3s;
+			border-radius: (@switch-socket-height / 2);
+		}
+
+		&:after {
+			width: @switch-control-size;
+			height: @switch-control-size;
+			border-radius: 50%;
+			box-shaodw: @switch-control-box-shadow;
+			transition: transform 0.3s;
+			margin: 0 @switch-control-margin;
+		}
+	}
+
+	:checked + label {
+		&:before {
+			box-shadow: inset 0 0 0 @switch-socket-active-border-size @switch-socket-active-border-color;
+		}
+
+		&:after {
+			transform: translateX(@switch-width - @switch-control-size - (2 * @switch-control-margin));
+		}
+	}
+
+	&.primary :checked + label:before { background-color: @color-primary; }
+	&.secondary :checked + label:before { background-color: @color-secondary; }
+	&.info :checked + label:before { background-color: @color-info; }
+	&.success :checked + label:before { background-color: @color-success; }
+	&.warning :checked + label:before { background-color: @color-warning; }
+	&.danger :checked + label:before { background-color: @color-danger; }
+}
+
+.load-overrides();

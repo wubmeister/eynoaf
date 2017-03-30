@@ -20,6 +20,12 @@
         font-weight: @weight-bold;
     }
 
+    &.bottom.attached {
+        position: absolute;
+        right: 0; bottom: 0; left: 0;
+        height: @progress-attached-size;
+    }
+
     &.primary .bar, .bar.primary {
         background-color: @color-primary;
         .choose-fg(@color-primary, #fff, @text-color);

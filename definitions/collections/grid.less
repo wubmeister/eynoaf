@@ -15,6 +15,10 @@
         padding: 0 @half-spacing;
     }
 
+    &.gallery > .column {
+        padding: @half-spacing;
+    }
+
     &.one.column, &.small-one.column { > .column { width: 100%; } }
     &.two.column, &.small-two.column { > .column { width: 50%; } }
     &.three.column, &.small-three.column { > .column { width: 33.33333%; } }
@@ -59,6 +63,10 @@
     }
 
     > .column {
+        &.wide {
+            width: 100%;
+        }
+
         &.one.wide, &.small-one.wide { width: 8.33333%; }
         &.two.wide, &.small-two.wide { width: 16.66667%; }
         &.three.wide, &.small-three.wide { width: 25%; }
