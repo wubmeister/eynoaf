@@ -2659,3 +2659,45 @@ ol.ui.menu {
   }
 }
 /**/
+/* Global variables */
+/* Mixins */
+/* List variables */
+.ui.list .item {
+  display: flex;
+}
+.ui.list .left {
+  padding: 0.5rem 0 0.5rem 1rem;
+  width: 4.5rem;
+  flex-shrink: 0;
+}
+.ui.list .right {
+  padding: 0.5rem 1rem 0.5rem 0;
+  width: 4.5rem;
+  flex-shrink: 0;
+  text-align: right;
+}
+.ui.list .content {
+  padding: 0.5rem 1rem 0.5rem 0;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.ui.list .content .title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: 700;
+}
+.ui.list .content .extra {
+  display: block;
+  float: right;
+  padding-left: 1rem;
+  opacity: 0.5;
+}
+.ui.list.divided .item + .item {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.ui.list.indent-divided .item + .item .content,
+.ui.list.indent-divided .item + .item .right {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+/**/

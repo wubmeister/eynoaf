@@ -1,0 +1,57 @@
+@element: list;
+@type: collection;
+
+@import (multiple) "../../theme.less";
+
+.ui.list {
+    .item {
+        display: flex;
+    }
+
+    .left {
+        padding: @list-item-v-padding 0 @list-item-v-padding @list-item-h-padding;
+        width: @list-item-left-width;
+        flex-shrink: 0;
+    }
+
+    .right {
+        padding: @list-item-v-padding @list-item-h-padding @list-item-v-padding 0;
+        width: @list-item-left-width;
+        flex-shrink: 0;
+        text-align: right;
+    }
+
+    .content {
+        padding: @list-item-v-padding @list-item-h-padding @list-item-v-padding 0;
+        flex-grow: 1;
+        overflow: hidden;
+
+        .title {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-weight: @weight-bold;
+        }
+
+        .extra {
+            display: block;
+            float: right;
+            padding-left: 1rem;
+            opacity: 0.5;
+        }
+    }
+
+    &.divided {
+        .item + .item {
+            border-top: @divider-size solid @divider-color;
+        }
+    }
+
+    &.indent-divided {
+        .item + .item .content, .item + .item .right {
+            border-top: @divider-size solid @divider-color;
+        }
+    }
+}
+
+.load-overrides();
