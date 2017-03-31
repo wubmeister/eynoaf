@@ -547,18 +547,21 @@ h6.ui.headline {
 /* Loader */
 
 @-webkit-keyframes rotate-loader {
-    from { -webkit-transition: rotate(0deg); }
-    to { -webkit-transition: rotate(180deg); }
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
 }
 @keyframes rotate-loader {
-    from { transition: rotate(0deg); }
-    to { transition: rotate(180deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .loader {
     position: relative;
+    display: block;
     width: 3rem;
     height: 3rem;
+    pointer-events: none;
+    opacity: 0;
 
     &:before, &:after {
         content: "";
@@ -566,6 +569,7 @@ h6.ui.headline {
         position: absolute;
         top: 0; right: 0; bottom: 0; left: 0;
         border: @loader-ring-width solid transparent;
+        border-radius: 50%;
     }
 
     &:before {
@@ -574,10 +578,17 @@ h6.ui.headline {
 
     &:after {
         border-top-color: @loader-spinner-color;
-        animation: rotate-loader 1s linear infinite;
     }
 }
 
+.loader.active, .ui.dimmer.active > .loader {
+  opacity: 1;
+}
+
+.loader.active:after, .ui.dimmer.active > .loader:after {
+    -webkit-animation: rotate-loader 1s linear infinite;
+    animation: rotate-loader 1s linear infinite;
+}
 
 /* Divider */
 
