@@ -1,12 +1,18 @@
 var UI = {
 	collectOptions: function (options, element, defaults) {
-		var attr, key, i;
+		var attr, key, i, value;
 
 		for (i = 0; i < element.attributes.length; i++) {
 			attr = element.attributes[i];
 			if (attr.name.substr(0, 5) == 'data-') {
 				key = attr.name.substr(5).replace(/-([a-zA-Z0-9])/g, function (m, m1) { return m1.toUpperCase(); });
-				options[key] = attr.value;
+				value = attr.value;
+				if (value == 'true') {
+					value = true;
+				} else if (value == 'false') {
+					value = false;
+				}
+				options[key] = value;
 			}
 		}
 

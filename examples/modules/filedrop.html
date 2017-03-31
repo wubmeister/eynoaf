@@ -32,7 +32,7 @@
             <h2 class="ui headline">Filedrop</h2>
 
             <form action="upload.php">
-                <input type="file" id="the-file" />
+                <input type="file" id="the-file" data-upload-on-drop="false" />
                 <label for="the-file">
                     <div>
                         <i class="material-icons">cloud_upload</i><br/>
@@ -43,10 +43,31 @@
                 <button type="submit" class="ui primary button">Submit</button>
             </form>
 
+            <form action="upload.php">
+                <div class="ui filedrop">
+                    <input type="file" id="the-file-2" />
+                    <div class="item" data-delete-action="upload.php">
+                        <div class="preview">
+                            <div class="inner"><img src="../assets/images/image1.jpg" /></div>
+                        </div>
+                        <div class="title">Image1</div>
+                    </div>
+                    <div class="label">
+                        <div>
+                            <i class="material-icons">cloud_upload</i><br/>
+                            Drop files here to upload
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="ui primary button">Submit</button>
+            </form>
+
         </div>
     </section>
 
 <script src="../../js/ui.js"></script>
+<script src="../../js/locale/nl_NL.js"></script>
 <script src="../../js/mime-type-icons.js"></script>
 <script src="../../js/uploader.js"></script>
 <script src="../../js/filedrop.js"></script>
@@ -54,6 +75,7 @@
 var fileDrop;
 
 fileDrop = new FileDrop(document.getElementById('the-file'));
+fileDrop = new FileDrop(document.getElementById('the-file-2'));
 
 </script>
 

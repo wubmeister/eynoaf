@@ -83,11 +83,16 @@ Uploader.prototype.ajax = function (url, data, headers) {
 
 	var promise = new Promise(function (resolve, reject) {
 		var xhr = new XMLHttpRequest(),
-			key;
+			key, response;
 
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4) {
 				if (this.status == 200) {
+					response = this.responseText;
+					if (response[0] == '{' || response[0] == '[') {
+						response = JSON.parse(this.responseText) || this.responseText;
+					}
+					this.parsedResponse = response;
 					resolve(this);
 				} else {
 					reject(this.statusText);

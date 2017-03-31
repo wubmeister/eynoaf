@@ -3,38 +3,89 @@ function FileDrop(element, options) {
 	var files, fileDrop, inner, postTo, form, inputName;
 
 	options = UI.collectOptions(options || {}, element, {
-		uploadOnDrop: false
+		uploadOnDrop: true
 	});
 
 	files = [];
 
 	inputName = element.name.replace(/\[\]$/, '') + '[]';
 
-	fileDrop = document.createElement('div');
-	fileDrop.className = 'ui filedrop';
-	inner = document.createElement('div');
-	inner.className = 'inner';
+	// Initialize the filedrop element
 
-	element.parentElement.insertBefore(fileDrop, element);
-	fileDrop.appendChild(element);
-	fileDrop.appendChild(inner);
+	// First, check if the input element is already placed inside a fileDrop element
+	fileDrop = element;
+	while (fileDrop && !fileDrop.classList.contains('filedrop')) {
+		fileDrop = fileDrop.parentElement;
+	}
+	if (fileDrop && !fileDrop.classList.contains('ui')) {
+		fileDrop = null;
+	}
+
+	if (!fileDrop) {
+		// If not, create a fileDrop element and wrap it aroud the input element
+		fileDrop = document.createElement('div');
+		fileDrop.className = 'ui filedrop';
+		element.parentElement.insertBefore(fileDrop, element);
+		fileDrop.appendChild(element);
+	} else {
+		// Check the existence of an inner element
+		inner = fileDrop.querySelector('.inner');
+		if (inner && inner.parentElement != fileDrop) {
+			inner = null;
+		}
+	}
+
+	// If there's no inner element yet, create one and add it to the fileDrop element
+	if (!inner) {
+		inner = document.createElement('div');
+		inner.className = 'inner';
+		fileDrop.appendChild(inner);
+	}
+
+	// Check for existing items and make sure they are direct children of the inner element
+	(function () {
+		var items = fileDrop.querySelectorAll('.item');
+
+		forEach(items, function (item) {
+			var actions, preview;
+
+			if (item.parentElement != inner) {
+				inner.appendChild(item);
+			}
+
+			// Make sure the item has an actions panel
+			preview = item.querySelector('.preview');
+			actions = item.querySelector('.actions');
+			if (preview && !actions) {
+				actions = document.createElement('div');
+				actions.className = 'actions';
+				actions.innerHTML = '<a class="ui white circle outline button" data-delete style="font-size: 24px;" title="' + UI.translations.delete + '"><i class="material-icons">delete</i></a>';
+				preview.appendChild(actions);
+			}
+		});
+	})();
+
+	// Check the exitence of a label
 
 	(function () {
 		var label, fdLabel;
 
-		fdLabel = document.createElement('div');
-		fdLabel.className = 'label';
+		label = fileDrop.querySelector('.label');
+		if (!label) {
+			fdLabel = document.createElement('div');
+			fdLabel.className = 'label';
 
-		if (element.id) {
-			label = document.querySelector('label[for="' + element.id + '"]');
+			if (element.id) {
+				label = document.querySelector('label[for="' + element.id + '"]');
+			}
+			if (label) {
+				fdLabel.innerHTML = label.innerHTML;
+				label.parentElement.removeChild(label);
+			} else {
+				fdLabel.innerHTML = 'Drop files here to upload';
+			}
+			fileDrop.appendChild(fdLabel);
 		}
-		if (label) {
-			fdLabel.innerHTML = label.innerHTML;
-			label.parentElement.removeChild(label);
-		} else {
-			fdLabel.innerHTML = 'Drop files here to upload';
-		}
-		fileDrop.appendChild(fdLabel);
 	})();
 
 	form = element;
@@ -78,7 +129,7 @@ function FileDrop(element, options) {
 		el.className = 'item';
 		el.innerHTML = '<div class="preview"><div class="inner"></div>' +
 			(options.uploadOnDrop ? '<div class="ui bottom attached primary progress"><div class="bar" style="width:0;"></div></div>' : '') +
-			'<div class="actions"><a class="ui white circle outline button" data-delete style="font-size: 24px;" title="Delete"><i class="material-icons">delete</i></a></div></div>' +
+			'<div class="actions"><a class="ui white circle outline button" data-delete style="font-size: 24px;" title="' + UI.translations.delete + '"><i class="material-icons">delete</i></a></div></div>' +
 			'<div class="title">' + file.name + '</div>';
 
 		inner.appendChild(el);
@@ -89,8 +140,12 @@ function FileDrop(element, options) {
 		return el;
 	}
 
-	function uploadFile(file, progressBar) {
-		var uploader = new Uploader();
+	function uploadFile(file, item) {
+		var uploader, progressBar;
+
+		uploader = new Uploader();
+		progressBar = item.querySelector('.preview .ui.progress');
+
 		uploader.set(inputName, file);
 		uploader.onprogress = function (phase) {
 			progressBar.querySelector('.bar').style.width = (100 * phase) + '%';
@@ -99,7 +154,11 @@ function FileDrop(element, options) {
 				progressBar.className = progressBar.className.replace(/\b(primary|secondary|info|success|warning|danger)\b/, 'success');
 			}
 		};
-		uploader.send(postTo);
+		uploader.send(postTo).then(function (xhr) {
+			if ((typeof xhr.parsedResponse == 'object') && ('deleteAction' in xhr.parsedResponse)) {
+				item.setAttribute('data-delete-action', xhr.parsedResponse.deleteAction);
+			}
+		});
 	}
 
 	function removeFile(file, item) {
@@ -115,7 +174,7 @@ function FileDrop(element, options) {
 		forEach(newFiles, function(file) {
 			var item = generateItem(file);
 			if (options.uploadOnDrop) {
-				uploadFile(file, item.querySelector('.preview .ui.progress'));
+				uploadFile(file, item);
 			} else {
 				item.fileDropFile = file;
 				files.push(file);
@@ -156,7 +215,7 @@ function FileDrop(element, options) {
 				} else {
 					url = el.getAttribute('data-delete-action');
 
-					if (url && confirm('Are you sure you want to delete this file?')) {
+					if (url && confirm(UI.translations.fileDrop.confirmDelete)) {
 						if (url && (match = url.match(/^(DELETE|GET|POST|PUT):/))) {
 							method = match[1];
 							url = url.substr(match[0].length);
@@ -171,7 +230,7 @@ function FileDrop(element, options) {
 								el.parentElement.removeChild(el);
 							},
 							error: function () {
-								alert('Something went wrong with deleting the file');
+								alert(UI.translations.fileDrop.deleteError);
 							}
 						});
 					}

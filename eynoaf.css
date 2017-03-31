@@ -2920,7 +2920,7 @@ ol.ui.menu {
 /* Filedrop variables */
 .ui.filedrop {
   position: relative;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   cursor: pointer;
 }
 .ui.filedrop input[type="file"] {
