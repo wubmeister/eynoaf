@@ -27,4 +27,4 @@ if [ -z "$site" ]; then
 	site=eynoaf
 fi
 
-uglifyjs --source-map dist/$site.min.js.map -o dist/$site.min.js js/ui.js js/locale/$locale.js js/accordion.js js/drilldown.js js/mime-type-icons.js js/uploader.js js/filedrop.js js/offcanvas.js js/scrollable-topbar.js js/tabs.js js/tooltip.js
+uglifyjs --source-map dist/$site.min.js.map -o dist/$site.min.js js/ui.js js/locale/$locale.js js/accordion.js js/drilldown.js js/embed.js js/mime-type-icons.js js/uploader.js js/filedrop.js js/offcanvas.js js/scrollable-topbar.js js/tabs.js js/tooltip.js

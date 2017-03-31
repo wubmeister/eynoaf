@@ -1,0 +1,22 @@
+@element: embed;
+@type: module;
+
+@import (multiple) "../../theme.less";
+
+.ui.embed {
+	position: relative;
+
+	.ratio {
+		display: block;
+		height: 0;
+	}
+
+	iframe {
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.load-overrides();
