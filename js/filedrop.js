@@ -8,7 +8,7 @@ function FileDrop(element, options) {
 
 	files = [];
 
-	inputName = element.name.replace(/\[\]$/, '') + '[]';
+	inputName = element.name; // .replace(/\[\]$/, '') + '[]';
 
 	// Initialize the filedrop element
 
@@ -196,7 +196,7 @@ function FileDrop(element, options) {
 	});
 
 	fileDrop.addEventListener('click', function (e) {
-		var el, url, method, match;
+		var el, url, method, match, event;
 
 		e.preventDefault();
 
@@ -237,7 +237,13 @@ function FileDrop(element, options) {
 				}
 			}
 		} else {
-			element.dispatchEvent(new MouseEvent('click'));
+			try {
+				event = new MouseEvent('click');
+			} catch (ex) {
+				event = document.createEvent('MouseEvents');
+				event.initEvent("click", true, false);
+			}
+			element.dispatchEvent(event);
 		}
 	});
 
