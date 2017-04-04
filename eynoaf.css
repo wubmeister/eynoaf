@@ -2948,6 +2948,8 @@ ol.ui.menu {
   display: flex;
   -webkit-align-items: flex-start;
   align-items: flex-start;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .ui.filedrop > .inner .item {
   width: 50%;
@@ -3010,6 +3012,8 @@ ol.ui.menu {
   left: 0;
   display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
   -webkit-justify-content: center;
   justify-content: center;
   -webkit-align-items: center;

@@ -1,9 +1,10 @@
 function FileDrop(element, options) {
 
-	var files, fileDrop, inner, postTo, form, inputName;
+	var files, fileDrop, inner, postTo, form, inputName, fdLabel;
 
 	options = UI.collectOptions(options || {}, element, {
-		uploadOnDrop: true
+		uploadOnDrop: true,
+		limit: -1
 	});
 
 	files = [];
@@ -68,7 +69,7 @@ function FileDrop(element, options) {
 	// Check the exitence of a label
 
 	(function () {
-		var label, fdLabel;
+		var label;
 
 		label = fileDrop.querySelector('.label');
 		if (!label) {
@@ -94,7 +95,7 @@ function FileDrop(element, options) {
 	}
 
 	if (form) {
-		postTo = form.getAttribute('action');
+		postTo = form.getAttribute('action') || location.toString();
 	} else {
 		postTo = location.toString();
 	}
@@ -170,14 +171,57 @@ function FileDrop(element, options) {
 		item.parentElement.removeChild(item);
 	}
 
+	function errorExceedLimit() {
+		var error;
+
+		if (fdLabel) {
+			error = fdLabel.querySelector('.error');
+
+			if (!error) {
+				error = document.createElement('div');
+				error.className = 'error';
+				error.innerHTML = UI.translations.fileDrop.exceedLimit
+					.replace(/\{n\}/g, options.limit)
+					.replace(/\{n([=><]{1,2}\d+)\?([^:]*)([^\}]*)\}/g, function (p, m1, m2, m3) {
+						var cond = eval('options.limit'+m1);
+						return cond ? m2 : m3;
+					});
+				fdLabel.appendChild(error);
+			}
+
+			error.style.display = 'block';
+		} else {
+			console.warn('No label element');
+		}
+	}
+
+	function hideError() {
+		var error;
+
+		if (fdLabel) {
+			error = fdLabel.querySelector('.error');
+
+			if (error) {
+				error.style.display = 'none';
+			}
+		}
+	}
+
 	function injectFiles(newFiles) {
 		forEach(newFiles, function(file) {
-			var item = generateItem(file);
-			if (options.uploadOnDrop) {
-				uploadFile(file, item);
+			var item;
+
+			if (options.limit == -1 || files.length < options.limit) {
+				hideError();
+				item = generateItem(file);
+				if (options.uploadOnDrop) {
+					uploadFile(file, item);
+				} else {
+					item.fileDropFile = file;
+					files.push(file);
+				}
 			} else {
-				item.fileDropFile = file;
-				files.push(file);
+				errorExceedLimit();
 			}
 		});
 	}
@@ -265,7 +309,9 @@ function FileDrop(element, options) {
 			});
 
 			uploader.send(postTo).then(function (xhr) {
-				if (xhr.responseURL) {
+				if ((typeof xhr.parsedResponse == 'object') && ('redirect' in xhr.parsedResponse)) {
+					window.location = xhr.parsedResponse.redirect;
+				} else if (xhr.responseURL) {
 					window.location = xhr.responseURL;
 				} else {
 					window.location.reload();
