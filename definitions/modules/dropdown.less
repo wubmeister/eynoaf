@@ -27,10 +27,30 @@
         transition: transform 0.3s, opacity 0.3s;
     }
 
-    &:hover > .ui.menu {
+    &:not(.click):hover > .ui.menu, &.active > .ui.menu {
         transform: none;
         opacity: 1;
         pointer-events: auto;
+    }
+
+    &.click {
+        cursor: pointer;
+    }
+
+    &.box {
+        padding: @dropdown-box-v-padding @dropdown-box-h-padding;
+        line-height: 1.25;
+        white-space: nowrap;
+        height: ((2 * @dropdown-box-v-padding) + 1.25em);
+        background: @dropdown-menu-background;
+
+        // > .ui.menu {
+        //     box-shadow: none;
+        // }
+
+        &:not(.click):hover > .ui.menu, &.active > .ui.menu {
+            box-shadow: @dropdown-menu-box-shadow;
+        }
     }
 }
 

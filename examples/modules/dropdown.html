@@ -44,8 +44,73 @@
                 <div class="item">Contact</div>
             </div>
 
+            <div style="margin:1rem 0">
+                <div class="ui box dropdown">
+                    Dropdown <span class="caret"></span>
+                    <div class="ui menu">
+                        <a class="item" href="/">Item 1</a>
+                        <a class="item" href="/">Item 2</a>
+                        <a class="item" href="/">Item 3</a>
+                        <a class="item" href="/">Item 4</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin:1rem 0">
+                <div class="ui click box dropdown">
+                    Dropdown <span class="caret"></span>
+                    <div class="ui menu">
+                        <a class="item" href="/">Item 1</a>
+                        <a class="item" href="/">Item 2</a>
+                        <a class="item" href="/">Item 3</a>
+                        <a class="item" href="/">Item 4</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+
+<script src="../../js/ui.js"></script>
+<script>
+(function(){
+    var clickDropdowns = document.querySelectorAll('.ui.click.dropdown');
+
+    function onDropdownClick(e) {
+        var el = e.target;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        while (el && !el.classList.contains('menu')) {
+            el = el.parentElement;
+        }
+
+        if (!el) {
+            this.classList.toggle('active');
+        }
+    }
+
+    forEach(clickDropdowns, function (dropdown) {
+        dropdown.addEventListener('click', onDropdownClick);
+    });
+
+    window.addEventListener('click', function (e) {
+        var el = e.target, dropdowns;
+
+        while (el && !el.classList.contains('dropdown')) {
+            el = el.parentElement;
+        }
+
+        if (!el) {
+            dropdowns = document.querySelectorAll('.ui.active.dropdown');
+            forEach(dropdowns, function (dropdown) {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
+})();
+</script>
 
 </body>
 
