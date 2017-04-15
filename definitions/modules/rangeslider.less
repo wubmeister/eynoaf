@@ -7,9 +7,13 @@
 
 .ui.rangeslider {
     position: relative;
-    margin: 24px 0 10px 0;
+    margin: (@rangeslider-label-height + @rangeslider-handle-size) 0 1rem 0;
     height: @rangeslider-height;
     background: @rangeslider-background;
+
+    &.stepped {
+        margin-bottom: 4rem;
+    }
 
     .bar {
         position: relative;
@@ -25,20 +29,26 @@
         margin-left: (-@rangeslider-handle-size / 2);
         margin-top: (-@rangeslider-handle-size / 2);
         border-radius: 50%;
+        background-color: @rangeslider-handle-color;
         cursor: -webkit-grab;
         cursor: grab;
+        z-index: 1;
     }
 
     .label {
         position: absolute;
-        top: -24px;
+        top: -(@rangeslider-label-height + @rangeslider-handle-size);
+        left: (@rangeslider-handle-size / 2);
         width: @rangeslider-label-width;
         height: @rangeslider-label-height;
         line-height: @rangeslider-label-height;
         text-align: center;
-        margin-left: (-@rangeslider-label-width / 2);
+        // margin-left: (-@rangeslider-label-width / 2);
+        transform: translateX(-50%);
         background: @rangeslider-label-background;
         color: @rangeslider-label-color;
+        border-radius: @rangeslider-label-border-radius;
+        font-size: 0.75em;
 
         &:after {
             content: "";
@@ -52,6 +62,30 @@
             border-left: 4px solid transparent;
         }
     }
+
+    .step {
+        text-align: center;
+        transform: translateX(-50%);
+        position: absolute;
+        top: @rangeslider-height;
+        font-size: 0.75em;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 5px;
+            background-color: @rangeslider-background;
+            margin: 0 auto;
+        }
+    }
+
+    &.primary .bar { background-color: @color-primary; }
+    &.secondary .bar { background-color: @color-secondary; }
+    &.info .bar { background-color: @color-info; }
+    &.success .bar { background-color: @color-success; }
+    &.warning .bar { background-color: @color-warning; }
+    &.danger .bar { background-color: @color-danger; }
 }
 
 .load-overrides();

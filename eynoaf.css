@@ -2184,9 +2184,12 @@ ol.ui.menu {
 /* Range slider */
 .ui.rangeslider {
   position: relative;
-  margin: 24px 0 10px 0;
+  margin: 34px 0 1rem 0;
   height: 2px;
   background: #ebebeb;
+}
+.ui.rangeslider.stepped {
+  margin-bottom: 4rem;
 }
 .ui.rangeslider .bar {
   position: relative;
@@ -2196,24 +2199,29 @@ ol.ui.menu {
 .ui.rangeslider .handle {
   position: absolute;
   top: 50%;
-  width: 8px;
-  height: 8px;
-  margin-left: -4px;
-  margin-top: -4px;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  margin-top: -5px;
   border-radius: 50%;
+  background-color: #ebebeb;
   cursor: -webkit-grab;
   cursor: grab;
+  z-index: 1;
 }
 .ui.rangeslider .label {
   position: absolute;
-  top: -24px;
+  top: -34px;
+  left: 5px;
   width: 40px;
   height: 24px;
   line-height: 24px;
   text-align: center;
-  margin-left: -20px;
+  transform: translateX(-50%);
   background: #ebebeb;
   color: #333;
+  border-radius: 2px;
+  font-size: 0.75em;
 }
 .ui.rangeslider .label:after {
   content: "";
@@ -2225,6 +2233,39 @@ ol.ui.menu {
   border-top: 4px solid #ebebeb;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
+}
+.ui.rangeslider .step {
+  text-align: center;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 2px;
+  font-size: 0.75em;
+}
+.ui.rangeslider .step:before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 5px;
+  background-color: #ebebeb;
+  margin: 0 auto;
+}
+.ui.rangeslider.primary .bar {
+  background-color: #136DFB;
+}
+.ui.rangeslider.secondary .bar {
+  background-color: #42E78A;
+}
+.ui.rangeslider.info .bar {
+  background-color: #669DF4;
+}
+.ui.rangeslider.success .bar {
+  background-color: #0ECD62;
+}
+.ui.rangeslider.warning .bar {
+  background-color: #FBAE13;
+}
+.ui.rangeslider.danger .bar {
+  background-color: #DB292D;
 }
 /**/
 /* Global variables */
