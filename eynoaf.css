@@ -1472,11 +1472,31 @@ ol.ui.menu {
   z-index: 10;
   transition: transform 0.3s, opacity 0.3s;
 }
-.ui.dropdown:hover > .ui.menu,
-.ui.menubar > .dropdown.item:hover > .ui.menu {
+.ui.dropdown:not(.click):hover > .ui.menu,
+.ui.menubar > .dropdown.item:not(.click):hover > .ui.menu,
+.ui.dropdown.active > .ui.menu,
+.ui.menubar > .dropdown.item.active > .ui.menu {
   transform: none;
   opacity: 1;
   pointer-events: auto;
+}
+.ui.dropdown.click,
+.ui.menubar > .dropdown.item.click {
+  cursor: pointer;
+}
+.ui.dropdown.box,
+.ui.menubar > .dropdown.item.box {
+  padding: 0.75em 1em;
+  line-height: 1.25;
+  white-space: nowrap;
+  height: 2.75em;
+  background: white;
+}
+.ui.dropdown.box:not(.click):hover > .ui.menu,
+.ui.menubar > .dropdown.item.box:not(.click):hover > .ui.menu,
+.ui.dropdown.box.active > .ui.menu,
+.ui.menubar > .dropdown.item.box.active > .ui.menu {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
 }
 /**/
 /* Global variables */
