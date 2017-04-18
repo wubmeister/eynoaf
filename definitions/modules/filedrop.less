@@ -7,11 +7,17 @@
 	position: relative;
 	margin: 1rem 0;
 	cursor: pointer;
+	background: @filedrop-background;
+	transition: background-color 0.2s;
 
 	input[type="file"] {
 		position: absolute;
 		z-index: -1;
 		opacity: 0;
+	}
+
+	&.selecting {
+		background: @filedrop-selecting-background;
 	}
 
 	> .inner {

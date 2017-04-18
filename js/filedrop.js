@@ -234,8 +234,18 @@ function FileDrop(element, options) {
 		fileDrop.addEventListener(event, dummyListener);
 	});
 
+	fileDrop.addEventListener('dragenter', function (e) {
+		e.preventDefault();
+		fileDrop.classList.add('selecting');
+	});
+	fileDrop.addEventListener('dragleave', function (e) {
+		e.preventDefault();
+		fileDrop.classList.remove('selecting');
+	});
+
 	fileDrop.addEventListener('drop', function (e) {
 		e.preventDefault();
+		fileDrop.classList.remove('selecting');
 		injectFiles(e.dataTransfer.files);
 	});
 
@@ -281,6 +291,7 @@ function FileDrop(element, options) {
 				}
 			}
 		} else {
+			fileDrop.classList.add('selecting');
 			try {
 				event = new MouseEvent('click');
 			} catch (ex) {
@@ -292,8 +303,15 @@ function FileDrop(element, options) {
 	});
 
 	element.addEventListener('change', function (e) {
+		fileDrop.classList.remove('selecting');
 		injectFiles(this.files);
 		this.value = '';
+	});
+
+	// Work in Safari & Chrome & IE & Edge
+	// Doesn't work on Firefox
+	window.addEventListener('focus', function (e) {
+		fileDrop.classList.remove('selecting');
 	});
 
 	if (!options.uploadOnDrop) {
