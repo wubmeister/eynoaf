@@ -27,8 +27,15 @@
 
 		.item {
 			width: 50%;
-			padding: @half-spacing;
+			padding: (@half-spacing / 2);
 			cursor: default;
+
+			> .inner {
+				padding: (@half-spacing / 2);
+				background-color: white;
+				border-radius: @border-radius;
+				box-shadow: 0 0 0 1px @divider-color;
+			}
 
 			.preview {
 				position: relative;
@@ -72,7 +79,7 @@
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
-				margin-top: @half-spacing;
+				margin-top: (@half-spacing / 2);
 				font-size: 0.85em;
 				text-align: center;
 			}

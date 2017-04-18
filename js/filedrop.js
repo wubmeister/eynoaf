@@ -128,10 +128,10 @@ function FileDrop(element, options) {
 
 		el = document.createElement('div');
 		el.className = 'item';
-		el.innerHTML = '<div class="preview"><div class="inner"></div>' +
+		el.innerHTML = '<div class="inner"><div class="preview"><div class="inner"></div>' +
 			(options.uploadOnDrop ? '<div class="ui bottom attached primary progress"><div class="bar" style="width:0;"></div></div>' : '') +
 			'<div class="actions"><a class="ui white circle outline button" data-delete style="font-size: 24px;" title="' + UI.translations.delete + '"><i class="material-icons">delete</i></a></div></div>' +
-			'<div class="title">' + file.name + '</div>';
+			'<div class="title">' + file.name + '</div></div>';
 
 		inner.appendChild(el);
 
