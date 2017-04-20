@@ -10,6 +10,7 @@ label {
 }
 
 .ui.form {
+    input:not([type]),
     input[type="email"],
     input[type="number"],
     input[type="password"],
@@ -115,6 +116,20 @@ label {
             width: 8px;
             height: 8px;
             margin: auto 4px;
+        }
+    }
+
+    .field {
+        .hint {
+            padding: (@half-spacing / 2) @input-h-padding;
+            font-size: 0.85em;
+
+            &.primary { color: @color-primary; }
+            &.secondary { color: @color-secondary; }
+            &.info { color: @color-info; }
+            &.success { color: @color-success; }
+            &.warning { color: @color-warning; }
+            &.danger, &.error { color: @color-danger; }
         }
     }
 }
