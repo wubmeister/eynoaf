@@ -1,3 +1,70 @@
+// Normalization
+if (!Element.prototype.matches) {
+    Element.prototype.matches =
+        Element.prototype.matchesSelector ||
+        Element.prototype.mozMatchesSelector ||
+        Element.prototype.msMatchesSelector ||
+        Element.prototype.oMatchesSelector ||
+        Element.prototype.webkitMatchesSelector ||
+        function(s) {
+            var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+                i = matches.length;
+            while (--i >= 0 && matches.item(i) !== this) {}
+            return i > -1;
+        };
+}
+if (!('Promise' in window)) {
+	window.Promise = function Promise(executor) {
+		var promise = this;
+
+		this.resolvers = [];
+		this.rejecters = [];
+		this.isResolved = false;
+		this.isRejected = false;
+		this.resolvedValue = null;
+		this.rejectedReason = null;
+
+		function resolve(value) {
+			var i;
+
+			promise.resolvedValue = value;
+			promise.isResolved = true;
+
+			for (i = 0; i < promise.resolvers.length; i++) {
+				promise.resolvers[i](value);
+			}
+		}
+
+		function reject(reason) {
+			var i;
+
+			promise.resolvedReason = reason;
+			promise.isRejected = true;
+
+			for (i = 0; i < promise.rejecters.length; i++) {
+				promise.rejecters[i](reason);
+			}
+		}
+
+		executor(resolve, reject);
+	}
+	window.Promise.prototype.then = function (callback) {
+		if (this.isResolved) {
+			callback(this.resolvedValue);
+		} else {
+			this.resolvers.push(callback);
+		}
+	};
+	window.Promise.prototype.catch = function (callback) {
+		if (this.isRejected) {
+			callback(this.rejectedReason);
+		} else {
+			this.rejecters.push(callback);
+		}
+	};
+}
+
+// UI utilities
 var UI = {
 	collectOptions: function (options, element, defaults) {
 		var attr, key, i, value;
@@ -86,6 +153,7 @@ var UI = {
 			};
 
 			xhr.open(('method' in options) ? options.method.toUpperCase() : (('data' in options) ? 'POST' : 'GET'), options.url, true);
+			xhr.setRequestHeader('X-Requested-With: XMLHttpRequest');
 			if ('data' in options) {
 				if (typeof options.data == 'object') {
 					xhr.setRequestHeader('Content-Type: application/json');
@@ -99,6 +167,47 @@ var UI = {
 				xhr.send();
 			}
 		}
+	},
+	closest: function (element, selector) {
+		while (element && !element.matches(selector)) {
+			element = element.parentElement;
+		}
+		return element;
+	},
+	createElement: function (spec, attrs) {
+		var m, m2, i, tagName = 'div', el;
+
+		if (m = spec.match(/^([a-zA-Z][a-zA-Z\-_:.]*)/)) {
+			tagName = m[1];
+		}
+
+		el = document.createElement(tagName);
+
+		m = spec.match(/#([a-zA-Z][a-zA-Z0-9\-_:.]*)/);
+		if (m) {
+			el.id = m[1];
+		}
+
+		m = spec.match(/(\.[a-zA-Z][a-zA-Z0-9\-_:.]*)+/);
+		if (m) {
+			el.className = m[0].substr(1).replace(/\./g, ' ');
+		}
+
+		m = spec.match(/\[[^=]+="[^"]*"\]/g);
+		if (m) {
+			for (i = 0; i < m.length; i++) {
+				m2 = m[i].match(/\[([^=]+)="([^"]*)"\]/);
+				el.setAttribute(m2[1], m2[2]);
+			}
+		}
+
+		if (attrs) {
+			for (i in attrs) {
+				el.setAttribute(i, attrs[i]);
+			}
+		}
+
+		return el;
 	}
 }
 
@@ -108,6 +217,7 @@ var UI = {
  * Can loop through:
  *  - Arrays: callback(item, index, array)
  *  - NodeLists: callback(node, index, nodeList)
+ *  - FileLists: callback(file, index, fileList)
  *  - Objects: callback(value, key, object)
  *  - Nodes: callback(elementChild, index, node)
  *    > This will loop through all the _direct_ element child nodes
@@ -120,7 +230,7 @@ function forEach(collection, callback) {
 
 	if (collection instanceof Array) {
 		collection.forEach(callback);
-	} else if (collection instanceof NodeList || collection instanceof FileList) {
+	} else if ('length' in collection) {
 		for (index = 0; index < collection.length; index++) {
 			if (callback(collection[index], index, collection) === false) {
 				break;
