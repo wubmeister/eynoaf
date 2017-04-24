@@ -153,13 +153,13 @@ var UI = {
 			};
 
 			xhr.open(('method' in options) ? options.method.toUpperCase() : (('data' in options) ? 'POST' : 'GET'), options.url, true);
-			xhr.setRequestHeader('X-Requested-With: XMLHttpRequest');
+			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 			if ('data' in options) {
 				if (typeof options.data == 'object') {
-					xhr.setRequestHeader('Content-Type: application/json');
+					xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 					data = JSON.stringify(options.data);
 				} else {
-					xhr.setRequestHeader('Content-Type: application/x-www-form-urlencoded');
+					xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 					data = options.data;
 				}
 				xhr.send(data);

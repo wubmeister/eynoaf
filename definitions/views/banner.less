@@ -7,9 +7,13 @@
 
 .ui.banner {
     position: relative;
-    height: 250px;
+    min-height: 50px;
+    display: block;
 
     // TODO: Banner size
+    .ratio {
+        height: 0;
+    }
 
     .image {
         position: absolute;
@@ -22,10 +26,18 @@
 
     .caption {
         position: absolute;
-        background: fade(@banner-caption-background-color, 75%);
+        background: fade(@banner-caption-background-color, 25%);
         color: @banner-caption-color;
         padding: @banner-caption-padding;
         z-index: 1;
+
+        &.transparent {
+            background: none !important;
+        }
+
+        &.inverted {
+            color: @banner-inverted-caption-color;
+        }
 
         &.top {
             top: 0; right: 0; left: 0;
@@ -70,6 +82,10 @@
                     fade(@banner-caption-background-color, 75%),
                     fade(@banner-caption-background-color, 0%));
             }
+        }
+
+        &.fill {
+            top: 0; right: 0; bottom: 0; left: 0;
         }
 
         :first-child {
