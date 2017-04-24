@@ -342,6 +342,10 @@ a {
     }
 }
 
+p:last-child, ul:last-child, ol:last-child, dl:last-child {
+    margin-bottom: 0;
+}
+
 .ui.headline {
     font: @weight-bold @h3-small-size @headline-font-family;
     line-height: @h3-small-line-height;
@@ -607,6 +611,11 @@ h6.ui.headline {
         top: -0.6em;
         font-weight: @weight-bold;
     }
+}
+
+hr.ui.divider {
+    border: none;
+    text-align: left;
 }
 
 .load-overrides();
