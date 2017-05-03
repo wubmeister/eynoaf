@@ -1,0 +1,118 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const child = require('child_process');
+
+function parseOptions(defaults, shortHands) {
+    var options = defaults||{}, key;
+
+    shortHands = shortHands||{};
+
+    process.argv.forEach((arg, index) => {
+        if (index >= 2) {
+
+            if (arg[0] == '-') {
+                if (key) {
+                    options[key] = true;
+                }
+                if (arg[1] == '-') {
+                    key = arg.substr(2);
+                } else {
+                    key = arg.substr(1);
+                    if (key in shortHands) {
+                        key = shortHands[key];
+                    }
+                }
+                key = key.replace(/-(.)/g, function (p, m1) { return m1.toUpperCase(); });
+            } else {
+                if (key) {
+                    if ((key in options) && (options[key] instanceof Array)) {
+                        options[key].push(arg);
+                    } else {
+                        options[key] = arg;
+                    }
+                    key = null;
+                }
+            }
+
+        }
+    });
+
+    if (key) {
+        options[key] = true;
+    }
+
+    return options;
+}
+
+var options = parseOptions({
+    site: 'eynoaf',
+    locale: 'en_US',
+    withJquery: false,
+    plugin: []
+}, { j: 'with-jquery', l: 'locale', s: 'site', p: 'plugin' });
+
+fs.readFile('scripts.json', 'utf8', (err, data) => {
+    var uglifyCmd = `uglifyjs --screw-ie8 --source-map dist/${options.site}.min.js.map -o dist/${options.site}.min.js`;
+    var scripts, plugin, ucfirstPlugin, js, m, m2, pfx, jquery = '';
+
+    if (err) {
+        console.log(err);
+    } else {
+
+        scripts = JSON.parse(data)
+        scripts.boilerplate.forEach(script => {
+            uglifyCmd += ` js/${script}.js`;
+        });
+
+        uglifyCmd += ` js/locale/${options.locale}.js`;
+
+        for (let key in scripts.plugins) {
+            if (options.plugin.length == 0 || options.plugin.indexOf(key) > -1) {
+                plugin = scripts.plugins[key];
+                if (plugin.dependencies) {
+                    plugin.dependencies.forEach(dep => {
+                        uglifyCmd += ` js/${dep}.js`;
+                    });
+                }
+                uglifyCmd += ` js/${key}.js`;
+                if (options.withJquery && plugin.jquery) {
+                    js = fs.readFileSync(`js/${key}.js`, 'utf8');
+                    m = js.indexOf('/*[jquery]');
+                    if (m > -1) {
+                        m2 = js.indexOf('[/jquery]*/');
+                        if (m2 > -1) {
+                            js = js.substring(m + 10, m2);
+                        } else {
+                            js = js.substr(m + 10);
+                        }
+                        js = js.replace(/^\s+|\s+$/g, '') + "\n";
+                    } else {
+                        ucfirstPlugin = key[0].toUpperCase() + key.substr(1);
+                        pfx = plugin.construct ? `this.plugin${ucfirstPlugin} = new ` : '';
+                        js = `$.fn.${key} = function (options) {
+    this.each(function () {
+        ${pfx}${ucfirstPlugin}(this, options);
+    });
+};
+`;
+                    }
+
+                    jquery += js;
+                }
+            }
+        }
+
+        if (options.withJquery) {
+            fs.writeFileSync('js/_jquery.js', jquery, 'utf8');
+            uglifyCmd += ' js/_jquery.js';
+        }
+
+        // console.log(uglifyCmd);
+        child.exec(uglifyCmd, (err, stdout, stderr) => {
+            console.log(stdout);
+            console.log(stderr);
+        });
+
+    }
+});

@@ -1,0 +1,34 @@
+{
+	"boilerplate": [ "ui" ],
+	"plugins": {
+		"accordion": {
+			"jquery": true
+		},
+		"drilldown": {
+			"jquery": true
+		},
+		"embed": {
+			"jquery": true
+		},
+		"filedrop": {
+			"jquery": true,
+			"dependencies": [ "mime-type-icons", "uploader" ]
+		},
+		"form": {
+			"jquery": true,
+			"construct": true
+		},
+		"offcanvas": {
+			"jquery": true
+		},
+		"scrollable-topbar": {
+			"jquery": true
+		},
+		"tabs": {
+			"jquery": true
+		},
+		"tooltip": {
+			"jquery": true
+		}
+	}
+}

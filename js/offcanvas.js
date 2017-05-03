@@ -55,3 +55,12 @@ window.addEventListener('click', function (e) {
         }
     }
 });
+
+/*[jquery]
+$.fn.offcanvas = function (action) {
+    if (!action || ['show','hide','toggle'].indexOf(action) == -1) action = 'show';
+    this.each(function () {
+        Offcanvas[action](this);
+    });
+}
+[/jquery]*/
