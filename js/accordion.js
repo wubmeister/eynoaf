@@ -77,10 +77,14 @@ function Accordion(element, options) {
 
 			// title._accordionContent.style.transitionDuration = '0';
 			title._accordionContent.style.height = title._accordionContent.scrollHeight + 'px';
-			setTimeout(function () {
+			if (title.currTimeout) {
+				clearTimeout(title.currTimeout);
+			}
+			title.currTimeout = setTimeout(function () {
 				title._accordionContent.classList.add('noanim');
 				title._accordionContent.style.height = 'auto';
 				title._accordionContent.classList.remove('noanim');
+				title.currTimeout = null;
 			}, duration);
 		}
 	}
@@ -98,9 +102,13 @@ function Accordion(element, options) {
 
 			title._accordionContent.classList.add('noanim');
 			title._accordionContent.style.height = title._accordionContent.scrollHeight + 'px';
-			setTimeout(function () {
+			if (title.currTimeout) {
+				clearTimeout(title.currTimeout);
+			}
+			title.currTimeout = setTimeout(function () {
 				title._accordionContent.classList.remove('noanim');
 				title._accordionContent.style.height = 0;
+				title.currTimeout = null;
 			}, 10);
 		}
 	}
