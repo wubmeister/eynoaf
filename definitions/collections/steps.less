@@ -1,0 +1,71 @@
+@element: steps;
+@type: collection;
+
+@import (multiple) "../../theme.less";
+
+.ui.steps {
+    display: flex;
+    overflow: hidden;
+
+    > .step {
+        flex: 1 1 100%;
+        position: relative;
+
+        padding: 1rem 0;
+        text-align: center;
+        line-height: 1.375;
+
+        background-color: #ebebeb;
+
+        &.active {
+            background-color: #09f;
+            color: white;
+        }
+
+        &.current {
+            font-weight: bold;
+        }
+
+        &.disabled {
+            background-color: #fafafa;
+        }
+
+        &:not(:last-child) {
+            padding-left: 1.4rem;
+
+            &:before, &:after {
+                content: "";
+                display: block;
+
+                width: 3.375rem;
+                height: 3.375rem;
+                border-top-right-radius: 1px;
+
+                position: absolute;
+                top: 0; right: 0;
+            }
+
+            &:before {
+                background-color: white;
+                transform: translateX(1.68750rem) rotate(45deg) skew(10deg, 10deg);
+                z-index: 1;
+            }
+
+            &:after {
+                background-color: #ebebeb;
+                transform: translateX(1.4rem) rotate(45deg) skew(10deg, 10deg);
+                z-index: 2;
+            }
+        }
+
+        &.active:after {
+            background-color: #09f;
+        }
+
+        &.disabled:after {
+            background-color: #fafafa;
+        }
+    }
+}
+
+.load-overrides();
