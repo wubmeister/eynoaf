@@ -228,26 +228,35 @@ function FileDrop(element, options) {
 
 	function dummyListener(e) {
 		e.preventDefault();
+		e.stopPropagation();
 	}
 
-	forEach([ 'drag', 'dragend', 'dragenter', 'dragexit', 'dragleave', 'dragover', 'dragstart' ], function (event) {
-		fileDrop.addEventListener(event, dummyListener);
-	});
+	//forEach([ /*'drag', 'dragend', 'dragenter', 'dragexit', 'dragleave', */'dragover'/*, 'dragstart'*/ ], function (event) {
+	//	fileDrop.addEventListener(event, dummyListener);
+	//});
+
+	fileDrop.addEventListener('dragover', function (e) {
+		e.preventDefault();
+		e.stopPropagation();
+	}, false);
 
 	fileDrop.addEventListener('dragenter', function (e) {
 		e.preventDefault();
+		e.stopPropagation();
 		fileDrop.classList.add('selecting');
-	});
+	}, false);
 	fileDrop.addEventListener('dragleave', function (e) {
 		e.preventDefault();
+		e.stopPropagation();
 		fileDrop.classList.remove('selecting');
-	});
+	}, false);
 
 	fileDrop.addEventListener('drop', function (e) {
 		e.preventDefault();
+		e.stopPropagation();
 		fileDrop.classList.remove('selecting');
 		injectFiles(e.dataTransfer.files);
-	});
+	}, false);
 
 	fileDrop.addEventListener('click', function (e) {
 		var el, url, method, match, event;
