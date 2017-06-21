@@ -53,7 +53,7 @@ var options = parseOptions({
 }, { j: 'with-jquery', l: 'locale', s: 'site', p: 'plugin' });
 
 fs.readFile('scripts.json', 'utf8', (err, data) => {
-    var uglifyCmd = `uglifyjs --screw-ie8 --source-map dist/${options.site}.min.js.map -o dist/${options.site}.min.js`;
+    var uglifyCmd = `uglifyjs --screw-ie8 --source-map ${options.site}.min.js.map -o dist/${options.site}.min.js`;
     var scripts, plugin, ucfirstPlugin, js, m, m2, pfx, jquery = '';
 
     if (err) {
@@ -112,6 +112,7 @@ fs.readFile('scripts.json', 'utf8', (err, data) => {
         child.exec(uglifyCmd, (err, stdout, stderr) => {
             console.log(stdout);
             console.log(stderr);
+            fs.renameSync(`${options.site}.min.js.map`, `dist/${options.site}.min.js.map`);
         });
 
     }
