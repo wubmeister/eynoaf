@@ -95,7 +95,7 @@ Uploader.prototype.ajax = function (url, data, headers) {
 					this.parsedResponse = response;
 					resolve(this);
 				} else {
-					reject(this.statusText);
+					reject(this.statusText || 'Error uploading file');
 				}
 			}
 		}
@@ -104,14 +104,19 @@ Uploader.prototype.ajax = function (url, data, headers) {
 			uploader.onprogress(e.loaded / e.total);
 		}
 
-		xhr.open('POST', url, true);
 
-		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-		for (key in headers) {
-			xhr.setRequestHeader(key, headers[key]);
+		try {
+			xhr.open('POST', url, true);
+
+			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+			for (key in headers) {
+				xhr.setRequestHeader(key, headers[key]);
+			}
+
+			xhr.send(data);
+		} catch (ex) {
+			reject(ex.message);
 		}
-
-		xhr.send(data);
 	});
 
 	return promise;
